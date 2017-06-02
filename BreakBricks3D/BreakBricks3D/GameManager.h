@@ -23,7 +23,7 @@ private:
 	GameManager(GameManager const&); // prevent copies
 	void operator=(GameManager const&); // prevent assignments
 
-	const int MAP_WIDTH = 5, MAP_HEIGHT = 5;
+	static const int MAP_WIDTH = 5, MAP_HEIGHT = 5;
 
 	// 플레이어를 초기화 -> 아마 판 이겠지
 	void initPlayer();

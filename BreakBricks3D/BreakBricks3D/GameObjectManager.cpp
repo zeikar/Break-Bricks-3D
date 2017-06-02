@@ -2,7 +2,18 @@
 
 void GameObjectManager::initPlayer()
 {
-	player.readOBJ("MikuFigure.obj");
+	player.readOBJ("box.obj");
+	player.setMaterial(GL2_Material::MAT_BLUE);
+	player.translate(glm::vec3(0.0f, -5.0f, 0.0f));
+	player.setScale(glm::vec3(2.0f, 0.2f, 1.0f));
+}
+
+void GameObjectManager::initBall()
+{
+	ball.readOBJ("sphere.obj");
+	ball.setMaterial(GL2_Material::MAT_RED);
+	ball.translate(glm::vec3(0.0f, -4.0f, 0.0f));
+	ball.setScale(glm::vec3(0.4f, 0.4f, 0.4f));
 }
 
 GameObject & GameObjectManager::getPlayer()
@@ -33,6 +44,7 @@ GameObject * GameObjectManager::getBlock(const int x, const int y, const int MAP
 void GameObjectManager::renderAll()
 {
 	player.render();
+	ball.render();
 
 	for (int i = 0; i < blocks.size(); i++)
 	{

@@ -4,8 +4,11 @@
 
 void GameManager::init()
 {
-	// 플레이어 초기화
+	// 플레이어(판) 초기화
 	GameObjectManager::getInstance().initPlayer();
+
+	// 공 초기화
+	GameObjectManager::getInstance().initBall();
 
 	// 블럭 초기화
 	initMap();
@@ -15,19 +18,19 @@ void GameManager::inputProcess()
 {
 	if (InputManager::getInstance().getKeyPressed(GLFW_KEY_W))
 	{
-		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0, 0, 0.01));
+		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0, 0, -0.01));
 	}
 	else if (InputManager::getInstance().getKeyPressed(GLFW_KEY_S))
 	{
-		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0, 0, -0.01));
+		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0, 0, 0.01));
 	}
 	if (InputManager::getInstance().getKeyPressed(GLFW_KEY_A))
 	{
-		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0.01, 0, 0));
+		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(-0.01, 0, 0));
 	}
 	else if (InputManager::getInstance().getKeyPressed(GLFW_KEY_D))
 	{
-		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(-0.01, 0, 0));
+		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0.01, 0, 0));
 	}
 
 	if (InputManager::getInstance().getKeyPressed(GLFW_KEY_SPACE))

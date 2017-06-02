@@ -14,6 +14,7 @@ public:
 	}
 
 	void initPlayer();
+	void initBall();
 	GameObject& getPlayer();
 	//void addGameObject(const GameObject& gameObject);
 	void addBlock(const int x, const int y);
@@ -28,6 +29,7 @@ private:
 	GameObjectManager(GameObjectManager const&); // prevent copies
 	void operator=(GameObjectManager const&); // prevent assignments
 
-	GameObject player;
+	// 밑의 판과 블록을 부술 공
+	GameObject player, ball;
 	std::vector<GameObject*> blocks;
 };

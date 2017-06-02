@@ -66,8 +66,9 @@ int Graphics::init()
 
 	const float zNear = 0.001, zFar = 100.0, fov = 45.0;			// UI
 	gl_world.camera_.Resize(width, height, fov, zNear, zFar);
+	gl_world.camera_.UpdateDolly(-80.0f);
 	gl_world.initShaders();
-		
+	
 	// depth test
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);

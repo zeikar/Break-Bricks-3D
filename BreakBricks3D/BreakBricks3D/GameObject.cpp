@@ -17,7 +17,12 @@ void GameObject::readOBJ(const char* fileName)
 
 	gl_obj.initPhongSurface(surface);
 
-	gl_obj.mat_.setGold();
+	setMaterial();
+}
+
+void GameObject::setMaterial(int matType)
+{
+	gl_obj.mat_.setMaterial(matType);
 }
 
 void GameObject::render()
@@ -37,7 +42,7 @@ void GameObject::translate(const glm::vec3& direction)
 	position += direction;
 
 	surface.translate(TV(direction));
-	
+
 	updateShader();
 }
 
@@ -55,7 +60,7 @@ void GameObject::setScale(const glm::vec3 & s)
 void GameObject::updateShader()
 {
 	// don't need to update if there is no change
-	gl_obj.updatePhongSurface(surface); 
+	gl_obj.updatePhongSurface(surface);
 }
 
 void GameObject::setActive(bool active)

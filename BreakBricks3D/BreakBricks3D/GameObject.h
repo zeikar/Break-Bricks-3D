@@ -8,7 +8,7 @@ public:
 	~GameObject();
 
 	void readOBJ(const char* fileName);
-	void setMaterial();
+	void setMaterial(int matType = 0);
 	void render();
 	void translate(const glm::vec3& direction);
 	void setScale(const glm::vec3& s);

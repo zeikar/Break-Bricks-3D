@@ -12,12 +12,12 @@ int Graphics::init()
 	glfwWindowHint(GLFW_SAMPLES, 32);
 
 	// window resolution
-	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	/*const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 	width_window = mode->width * 0.8f;
-	height_window = mode->height * 0.8f;
+	height_window = mode->height * 0.8f;*/
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(width_window, height_window, "Hello World", NULL, NULL);
+	window = glfwCreateWindow(width_window, height_window, "Break Bricks 3D ! by. 2013111995 LuciZ::Zeikar", NULL, NULL);
 
 	if (!window)
 	{
@@ -66,7 +66,9 @@ int Graphics::init()
 
 	const float zNear = 0.001, zFar = 100.0, fov = 45.0;			// UI
 	gl_world.camera_.Resize(width, height, fov, zNear, zFar);
-	gl_world.camera_.UpdateDolly(-80.0f);
+	gl_world.camera_.UpdateDolly(-90.0f);
+	gl_world.camera_.StartMousePan(5, 5);
+	gl_world.camera_.EndMousePan(20, 5);
 	gl_world.initShaders();
 	
 	// depth test

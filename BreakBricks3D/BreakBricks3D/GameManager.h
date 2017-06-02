@@ -25,6 +25,9 @@ private:
 
 	static const int MAP_WIDTH = 5, MAP_HEIGHT = 5;
 
+	// 게임이 시작되었는지 체크
+	bool isGameStarted = false;
+
 	// 플레이어를 초기화 -> 아마 판 이겠지
 	void initPlayer();
 	// 화면에 블럭들을 초기화

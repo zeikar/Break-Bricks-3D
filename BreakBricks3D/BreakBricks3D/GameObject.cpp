@@ -4,7 +4,7 @@
 GameObject::GameObject()
 {
 	position = glm::vec3(0.0f, 0.0f, 0.0f);
-	scale = glm::vec3(0.0f, 0.0f, 0.0f);
+	scale = glm::vec3(1.0f, 1.0f, 1.0f);
 }
 
 GameObject::~GameObject()
@@ -46,11 +46,16 @@ void GameObject::translate(const glm::vec3& direction)
 	updateShader();
 }
 
+glm::vec3 & GameObject::getScale()
+{
+	return scale;
+}
+
 void GameObject::setScale(const glm::vec3 & s)
 {
-	position.x *= s.x;
-	position.y *= s.y;
-	position.z *= s.z;
+	scale.x *= s.x;
+	scale.y *= s.y;
+	scale.z *= s.z;
 
 	surface.scale(s.x, s.y, s.z, true);
 
@@ -63,7 +68,17 @@ void GameObject::updateShader()
 	gl_obj.updatePhongSurface(surface);
 }
 
+bool GameObject::getActive()
+{
+	return isActive;
+}
+
 void GameObject::setActive(bool active)
 {
 	isActive = active;
+}
+
+glm::vec3 & GameObject::getPosition()
+{	
+	return position;
 }

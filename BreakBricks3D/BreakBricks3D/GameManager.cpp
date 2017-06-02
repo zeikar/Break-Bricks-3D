@@ -16,26 +16,24 @@ void GameManager::init()
 
 void GameManager::inputProcess()
 {
-	if (InputManager::getInstance().getKeyPressed(GLFW_KEY_W))
-	{
-		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0, 0, -0.01));
-	}
-	else if (InputManager::getInstance().getKeyPressed(GLFW_KEY_S))
-	{
-		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0, 0, 0.01));
-	}
 	if (InputManager::getInstance().getKeyPressed(GLFW_KEY_A))
 	{
-		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(-0.01, 0, 0));
+		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(-0.1f, 0.0f, 0.0f));
 	}
 	else if (InputManager::getInstance().getKeyPressed(GLFW_KEY_D))
 	{
-		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0.01, 0, 0));
+		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0.1f, 0.0f, 0.0f));
 	}
 
+	// 스페이스바
 	if (InputManager::getInstance().getKeyPressed(GLFW_KEY_SPACE))
 	{
-		GameObjectManager::getInstance().getBlock(1, 1, MAP_WIDTH)->setActive(false);
+		if (isGameStarted == false) 
+		{
+			GameObjectManager::getInstance().startBall();
+			isGameStarted = true;
+		}
+		//GameObjectManager::getInstance().getBlock(1, 1, MAP_WIDTH)->setActive(false);
 	}
 }
 

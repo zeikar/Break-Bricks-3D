@@ -11,11 +11,14 @@ public:
 	void setMaterial(int matType = 0);
 	void render();
 	void translate(const glm::vec3& direction);
+	glm::vec3& getScale();
 	void setScale(const glm::vec3& s);
 	void updateShader();
+	bool getActive();
 	void setActive(bool active);
+	glm::vec3& getPosition();
 
-private:
+protected:
 	bool isActive = true;
 	glm::vec3 position, scale;
 

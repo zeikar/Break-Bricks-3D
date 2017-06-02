@@ -89,6 +89,9 @@
     <ClCompile Include="GameObjectManager.cpp">
       <Filter>LuciZ_Library</Filter>
     </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>LuciZ_Library</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Matrix4.h" />
@@ -209,6 +212,9 @@
       <Filter>LuciZ_Library</Filter>
     </ClInclude>
     <ClInclude Include="GameObjectManager.h">
+      <Filter>LuciZ_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
       <Filter>LuciZ_Library</Filter>
     </ClInclude>
   </ItemGroup>

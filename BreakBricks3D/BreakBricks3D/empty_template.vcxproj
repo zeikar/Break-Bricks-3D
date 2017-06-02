@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="CameraControl.cpp" />
     <ClCompile Include="DataStructure\Array2D.cpp" />
     <ClCompile Include="DataStructure\VectorND.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="Math\Quaternion.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="CameraControl.h" />
     <ClInclude Include="DataStructure\Array1D.h" />
     <ClInclude Include="DataStructure\Array2D.h" />

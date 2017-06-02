@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="GL2\GL_VIEW.cpp">
+      <Filter>GL2</Filter>
+    </ClCompile>
+    <ClCompile Include="GL2\GL2_Light.cpp">
+      <Filter>GL2</Filter>
+    </ClCompile>
+    <ClCompile Include="GL2\GL2_Material.cpp">
+      <Filter>GL2</Filter>
+    </ClCompile>
+    <ClCompile Include="GL2\GL2_Object.cpp">
+      <Filter>GL2</Filter>
+    </ClCompile>
+    <ClCompile Include="GL2\GL2_ShaderProgram.cpp">
+      <Filter>GL2</Filter>
+    </ClCompile>
+    <ClCompile Include="GL2\GL2_World.cpp">
+      <Filter>GL2</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Matrix2X2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Matrix3X3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Quaternion.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Box2D.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Box3D.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\PLANE.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Ray3D.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Sphere2D.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Sphere3D.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\StaticTriangle.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\TriangularSurface\MeshSimplification.cpp">
+      <Filter>Geometry\TriangularSurface</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\TriangularSurface\ObjFileReader.cpp">
+      <Filter>Geometry\TriangularSurface</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\TriangularSurface\StaticTriangleOperations.cpp">
+      <Filter>Geometry\TriangularSurface</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\TriangularSurface\StaticTriangularSurface.cpp">
+      <Filter>Geometry\TriangularSurface</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\TriangularSurface\VertexOperations.cpp">
+      <Filter>Geometry\TriangularSurface</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructure\Array2D.cpp">
+      <Filter>DataStructure</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStructure\VectorND.cpp">
+      <Filter>DataStructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>LuciZ_Library</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>LuciZ_Library</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraControl.cpp">
+      <Filter>LuciZ_Library</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>LuciZ_Library</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>LuciZ_Library</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectManager.cpp">
+      <Filter>LuciZ_Library</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Matrix4.h" />
+    <ClInclude Include="Vector4.h" />
+    <ClInclude Include="ObjReader.h" />
+    <ClInclude Include="Vector3.h" />
+    <ClInclude Include="GL2\GL_VIEW.h">
+      <Filter>GL2</Filter>
+    </ClInclude>
+    <ClInclude Include="GL2\GL2_Light.h">
+      <Filter>GL2</Filter>
+    </ClInclude>
+    <ClInclude Include="GL2\GL2_Material.h">
+      <Filter>GL2</Filter>
+    </ClInclude>
+    <ClInclude Include="GL2\GL2_Object.h">
+      <Filter>GL2</Filter>
+    </ClInclude>
+    <ClInclude Include="GL2\GL2_ShaderProgram.h">
+      <Filter>GL2</Filter>
+    </ClInclude>
+    <ClInclude Include="GL2\GL2_World.h">
+      <Filter>GL2</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Matrix2X2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Matrix3X3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\MatrixMXN.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\MatrixNXN.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Quaternion.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Box2D.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Box3D.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\PLANE.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Ray3D.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Sphere2D.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Sphere3D.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\StaticTriangle.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\TriangularSurface\MeshSimplification.h">
+      <Filter>Geometry\TriangularSurface</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\TriangularSurface\ObjFileReader.h">
+      <Filter>Geometry\TriangularSurface</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\TriangularSurface\StaticTriangleOperations.h">
+      <Filter>Geometry\TriangularSurface</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\TriangularSurface\StaticTriangularSurface.h">
+      <Filter>Geometry\TriangularSurface</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\TriangularSurface\VertexOperations.h">
+      <Filter>Geometry\TriangularSurface</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructure\Array1D.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructure\Array2D.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructure\Array3D.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructure\LinkedArray.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructure\LinkedArrayBlock.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructure\Vector2D.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructure\Vector3D.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructure\Vector4D.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructure\VectorND.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="MassSpringSystem.h" />
+    <ClInclude Include="Graphics.h">
+      <Filter>LuciZ_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>LuciZ_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraControl.h">
+      <Filter>LuciZ_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>LuciZ_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>LuciZ_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectManager.h">
+      <Filter>LuciZ_Library</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GL2\shaders\fragment_shader.glsl">
+      <Filter>GL2\shaders</Filter>
+    </None>
+    <None Include="GL2\shaders\vertex_shader.glsl">
+      <Filter>GL2\shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="GL2">
+      <UniqueIdentifier>{dc205a04-1f5c-43f9-b3b0-1340daee8d7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GL2\shaders">
+      <UniqueIdentifier>{902a15c0-7ff7-4f4e-845b-9e8a55ec6240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{38e684eb-2ab6-4305-a229-d8b741b5f0db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry">
+      <UniqueIdentifier>{54b2e5bb-3180-4ae0-bc8d-72939b972ed3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry\TriangularSurface">
+      <UniqueIdentifier>{a86d9a14-9fc5-42c9-ac46-b690bdfc542f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataStructure">
+      <UniqueIdentifier>{4c2ebe8d-5a11-453a-9bad-9e3af5f96369}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LuciZ_Library">
+      <UniqueIdentifier>{8815f376-b6bf-4920-8398-90dc043f076c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{d9ecee36-9b16-4ab4-a4f6-c24ed1410a37}</ProjectGuid>
+    <RootNamespace>empty_template</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>D:\github-repository\glewtest\glfw-3.2.1.bin.WIN32\include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>D:\github-repository\glewtest\glew-2.0.0\lib\Release\Win32;D:\github-repository\glewtest\glfw-3.2.1.bin.WIN32\lib-vc2015;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../;../glm/;./;..\glfw-3.2.1.bin.WIN64\include;..\glew-2.0.0\include\</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>glu32.lib;opengl32.lib;glew32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\lib;..\glfw-3.2.1.bin.WIN64\lib-vc2015;..\glew-2.0.0\lib\Debug\x64</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>D:\github-repository\glewtest\glfw-3.2.1.bin.WIN32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>D:\github-repository\glewtest\glew-2.0.0\lib\Release\Win32;D:\github-repository\glewtest\glfw-3.2.1.bin.WIN32\lib-vc2015;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../;../glm/;./;..\glfw-3.2.1.bin.WIN64\include;..\glew-2.0.0\include\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\glew-2.0.0\lib\Release\x64;..\glfw-3.2.1.bin.WIN64\lib-vc2015;..\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glu32.lib;opengl32.lib;glew32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="CameraControl.cpp" />
+    <ClCompile Include="DataStructure\Array2D.cpp" />
+    <ClCompile Include="DataStructure\VectorND.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectManager.cpp" />
+    <ClCompile Include="Geometry\Box2D.cpp" />
+    <ClCompile Include="Geometry\Box3D.cpp" />
+    <ClCompile Include="Geometry\PLANE.cpp" />
+    <ClCompile Include="Geometry\Ray3D.cpp" />
+    <ClCompile Include="Geometry\Sphere2D.cpp" />
+    <ClCompile Include="Geometry\Sphere3D.cpp" />
+    <ClCompile Include="Geometry\StaticTriangle.cpp" />
+    <ClCompile Include="Geometry\TriangularSurface\MeshSimplification.cpp" />
+    <ClCompile Include="Geometry\TriangularSurface\ObjFileReader.cpp" />
+    <ClCompile Include="Geometry\TriangularSurface\StaticTriangleOperations.cpp" />
+    <ClCompile Include="Geometry\TriangularSurface\StaticTriangularSurface.cpp" />
+    <ClCompile Include="Geometry\TriangularSurface\VertexOperations.cpp" />
+    <ClCompile Include="GL2\GL2_Light.cpp" />
+    <ClCompile Include="GL2\GL2_Material.cpp" />
+    <ClCompile Include="GL2\GL2_Object.cpp" />
+    <ClCompile Include="GL2\GL2_ShaderProgram.cpp" />
+    <ClCompile Include="GL2\GL2_World.cpp" />
+    <ClCompile Include="GL2\GL_VIEW.cpp" />
+    <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Math\Matrix2X2.cpp" />
+    <ClCompile Include="Math\Matrix3X3.cpp" />
+    <ClCompile Include="Math\Quaternion.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CameraControl.h" />
+    <ClInclude Include="DataStructure\Array1D.h" />
+    <ClInclude Include="DataStructure\Array2D.h" />
+    <ClInclude Include="DataStructure\Array3D.h" />
+    <ClInclude Include="DataStructure\LinkedArray.h" />
+    <ClInclude Include="DataStructure\LinkedArrayBlock.h" />
+    <ClInclude Include="DataStructure\Vector2D.h" />
+    <ClInclude Include="DataStructure\Vector3D.h" />
+    <ClInclude Include="DataStructure\Vector4D.h" />
+    <ClInclude Include="DataStructure\VectorND.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectManager.h" />
+    <ClInclude Include="Geometry\Box2D.h" />
+    <ClInclude Include="Geometry\Box3D.h" />
+    <ClInclude Include="Geometry\PLANE.h" />
+    <ClInclude Include="Geometry\Ray3D.h" />
+    <ClInclude Include="Geometry\Sphere2D.h" />
+    <ClInclude Include="Geometry\Sphere3D.h" />
+    <ClInclude Include="Geometry\StaticTriangle.h" />
+    <ClInclude Include="Geometry\TriangularSurface\MeshSimplification.h" />
+    <ClInclude Include="Geometry\TriangularSurface\ObjFileReader.h" />
+    <ClInclude Include="Geometry\TriangularSurface\StaticTriangleOperations.h" />
+    <ClInclude Include="Geometry\TriangularSurface\StaticTriangularSurface.h" />
+    <ClInclude Include="Geometry\TriangularSurface\VertexOperations.h" />
+    <ClInclude Include="GL2\GL2_Light.h" />
+    <ClInclude Include="GL2\GL2_Material.h" />
+    <ClInclude Include="GL2\GL2_Object.h" />
+    <ClInclude Include="GL2\GL2_ShaderProgram.h" />
+    <ClInclude Include="GL2\GL2_World.h" />
+    <ClInclude Include="GL2\GL_VIEW.h" />
+    <ClInclude Include="Graphics.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="MassSpringSystem.h" />
+    <ClInclude Include="Math\Matrix2X2.h" />
+    <ClInclude Include="Math\Matrix3X3.h" />
+    <ClInclude Include="Math\MatrixMXN.h" />
+    <ClInclude Include="Math\MatrixNXN.h" />
+    <ClInclude Include="Math\Quaternion.h" />
+    <ClInclude Include="Matrix4.h" />
+    <ClInclude Include="ObjReader.h" />
+    <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="Vector3.h" />
+    <ClInclude Include="Vector4.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GL2\shaders\fragment_shader.glsl" />
+    <None Include="GL2\shaders\vertex_shader.glsl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,109 @@
+﻿  Quaternion.cpp
+  Matrix3X3.cpp
+  Matrix2X2.cpp
+  main.cpp
+c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: 'APIENTRY': 매크로 재정의
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\glfw-3.2.1.bin.win64\include\glfw\glfw3.h(98): note: 'APIENTRY'의 이전 정의를 참조하십시오.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\gl2\gl2_material.h(43): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+  InputManager.cpp
+c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: 'APIENTRY': 매크로 재정의
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\glfw-3.2.1.bin.win64\include\glfw\glfw3.h(98): note: 'APIENTRY'의 이전 정의를 참조하십시오.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\inputmanager.cpp(32): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\inputmanager.cpp(40): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\inputmanager.cpp(49): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\inputmanager.cpp(57): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\inputmanager.cpp(66): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\inputmanager.cpp(71): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Graphics.cpp
+c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: 'APIENTRY': 매크로 재정의
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\glfw-3.2.1.bin.win64\include\glfw\glfw3.h(98): note: 'APIENTRY'의 이전 정의를 참조하십시오.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\graphics.cpp(16): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\graphics.cpp(17): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\graphics.cpp(67): warning C4305: '초기화 중': 'double'에서 'float'(으)로 잘립니다.
+  GL_VIEW.cpp
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\gl2\gl_view.cpp(160): warning C4244: '인수': 'int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GL2_World.cpp
+  GL2_ShaderProgram.cpp
+  GL2_Object.cpp
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\gl2\gl2_material.h(43): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+  GL2_Material.cpp
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\gl2\gl2_material.h(43): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+  GL2_Light.cpp
+  VertexOperations.cpp
+  StaticTriangularSurface.cpp
+  StaticTriangleOperations.cpp
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\triangularsurface\statictriangleoperations.cpp(46): warning C4244: '인수': 'const double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\triangularsurface\statictriangleoperations.cpp(254): warning C4244: '초기화 중': 'double'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\triangularsurface\statictriangleoperations.cpp(254): warning C4244: '초기화 중': 'double'에서 'const T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\triangularsurface\statictriangleoperations.cpp(255): warning C4244: '초기화 중': 'double'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\triangularsurface\statictriangleoperations.cpp(255): warning C4244: '초기화 중': 'double'에서 'const T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\triangularsurface\statictriangleoperations.cpp(261): warning C4244: '초기화 중': 'double'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\triangularsurface\statictriangleoperations.cpp(261): warning C4244: '초기화 중': 'double'에서 'const T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  ObjFileReader.cpp
+  MeshSimplification.cpp
+  StaticTriangle.cpp
+  Sphere3D.cpp
+  Sphere2D.cpp
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\sphere2d.h(42): warning C4244: 'return': 'double'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\graphics.cpp(80): warning C4715: 'Graphics::init': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  컴파일하고 있습니다...
+  Ray3D.cpp
+  PLANE.cpp
+  Box3D.cpp
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(102): warning C4244: '인수': 'float'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(97): note: 클래스 템플릿 멤버 함수 'float Box3D<float>::getSignedDistance(const Vector3D<float> &) const'을(를) 컴파일하고 있습니다.
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(352): note: 컴파일 중인 클래스 템플릿 인스턴스화 'Box3D<float>'에 대한 참조를 확인하십시오.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(102): warning C4244: 'return': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(45): warning C4244: '인수': 'const int'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(44): note: 클래스 템플릿 멤버 함수 'Box3D<float> Box3D<int>::getAABB(void) const'을(를) 컴파일하고 있습니다.
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(351): note: 컴파일 중인 클래스 템플릿 인스턴스화 'Box3D<int>'에 대한 참조를 확인하십시오.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(300): warning C4244: '인수': 'float'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(299): note: 클래스 템플릿 멤버 함수 'Vector3D<TT> Box3D<TT>::getCenter(void) const'을(를) 컴파일하고 있습니다.
+          with
+          [
+              TT=int
+          ]
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(306): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(305): note: 클래스 템플릿 멤버 함수 'int Box3D<int>::getMaxUnityScale(void) const'을(를) 컴파일하고 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(312): warning C4244: 'return': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(314): warning C4244: 'return': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(320): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(319): note: 클래스 템플릿 멤버 함수 'int Box3D<int>::getMinUnityScale(void) const'을(를) 컴파일하고 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(326): warning C4244: 'return': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(328): warning C4244: 'return': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(102): warning C4244: 'return': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(97): note: 클래스 템플릿 멤버 함수 'int Box3D<int>::getSignedDistance(const Vector3D<TT> &) const'을(를) 컴파일하고 있습니다.
+          with
+          [
+              TT=int
+          ]
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(45): warning C4244: '인수': 'const double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(44): note: 클래스 템플릿 멤버 함수 'Box3D<float> Box3D<double>::getAABB(void) const'을(를) 컴파일하고 있습니다.
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(353): note: 컴파일 중인 클래스 템플릿 인스턴스화 'Box3D<double>'에 대한 참조를 확인하십시오.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(306): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(305): note: 클래스 템플릿 멤버 함수 'double Box3D<double>::getMaxUnityScale(void) const'을(를) 컴파일하고 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(320): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(319): note: 클래스 템플릿 멤버 함수 'double Box3D<double>::getMinUnityScale(void) const'을(를) 컴파일하고 있습니다.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(102): warning C4244: '인수': 'double'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\geometry\box3d.cpp(97): note: 클래스 템플릿 멤버 함수 'double Box3D<double>::getSignedDistance(const Vector3D<double> &) const'을(를) 컴파일하고 있습니다.
+  Box2D.cpp
+  GameObjectManager.cpp
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\gl2\gl2_material.h(43): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+  GameObject.cpp
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\gl2\gl2_material.h(43): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: 'APIENTRY': 매크로 재정의
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\glfw-3.2.1.bin.win64\include\glfw\glfw3.h(98): note: 'APIENTRY'의 이전 정의를 참조하십시오.
+  GameManager.cpp
+c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: 'APIENTRY': 매크로 재정의
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\glfw-3.2.1.bin.win64\include\glfw\glfw3.h(98): note: 'APIENTRY'의 이전 정의를 참조하십시오.
+d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\프로젝트 - 2013111995 박현석\gl2\gl2_material.h(43): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+  VectorND.cpp
+  Array2D.cpp
+  CameraControl.cpp
+c:\program files (x86)\windows kits\8.1\include\shared\minwindef.h(130): warning C4005: 'APIENTRY': 매크로 재정의
+  d:\zeikar\zeikar's world 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\minecraft opengl\glfw-3.2.1.bin.win64\include\glfw\glfw3.h(98): note: 'APIENTRY'의 이전 정의를 참조하십시오.
+  코드를 생성하고 있습니다...
+LINK : warning LNK4098: 'MSVCRT' defaultlib가 다른 라이브러리와 충돌합니다. /NODEFAULTLIB:library를 사용하십시오.
+  empty_template.vcxproj -> D:\Zeikar\Zeikar's World 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\Minecraft OpenGL\프로젝트 - 2013111995 박현석\x64\Debug\empty_template.exe
+  empty_template.vcxproj -> D:\Zeikar\Zeikar's World 4\학교자료\2017\1학기\컴퓨터그래픽스입문\프로젝트\Minecraft OpenGL\프로젝트 - 2013111995 박현석\x64\Debug\empty_template.pdb (Partial PDB)

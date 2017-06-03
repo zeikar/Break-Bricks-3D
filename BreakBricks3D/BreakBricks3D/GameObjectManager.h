@@ -16,6 +16,7 @@ public:
 
 	void initPlayer();
 	void initBall();
+	void initWalls();
 	GameObject& getPlayer();
 	// 게임 시작 -> 공을 위로 보낸다.
 	void startBall();
@@ -33,12 +34,18 @@ private:
 	void operator=(GameObjectManager const&); // prevent assignments
 
 	static const float BALL_RADIUS;
+	static const float LEFT_WALL_POS, RIGHT_WALL_POS, UP_WALL_POS, WALL_WIDTH;
+	static const int COLLISION_X = 1, COLLISION_Y = 2, COLLISION_CORNER = 3;
 
 	// 밑의 판과 블록을 부술 공
 	GameObject player;
 	Ball ball;
+
+	// 옆과 위의 벽들
+	GameObject leftWall, rightWall, upWall;
 	std::vector<GameObject*> blocks;
 
 	// 충돌 체크
 	void collisionCheck();
+	int collisionBetweenCircleAndRect(GameObject& circleObject, GameObject& rectObject);
 };

@@ -7,6 +7,9 @@ void GameManager::init()
 	// 플레이어(판) 초기화
 	GameObjectManager::getInstance().initPlayer();
 
+	// 벽 초기화
+	GameObjectManager::getInstance().initWalls();
+
 	// 공 초기화
 	GameObjectManager::getInstance().initBall();
 

@@ -67,7 +67,8 @@ int Graphics::init()
 	const float zNear = 0.001, zFar = 100.0, fov = 45.0;			// UI
 	gl_world.camera_.Resize(width, height, fov, zNear, zFar);
 	gl_world.camera_.UpdateDolly(-90.0f);
-	gl_world.camera_.StartMousePan(5, 5);
+	gl_world.camera_.StartMousePan(70, 30);
+	gl_world.camera_.ProcessMouseMotion(20, 5);
 	gl_world.camera_.EndMousePan(20, 5);
 	gl_world.initShaders();
 	

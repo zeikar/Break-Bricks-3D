@@ -1,4 +1,3 @@
 ﻿  GameObjectManager.cpp
-c:\users\user\documents\github\break-bricks-3d\breakbricks3d\breakbricks3d\gl2\gl2_material.h(64): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
   empty_template.vcxproj -> C:\Users\USER\Documents\GitHub\Break-Bricks-3D\BreakBricks3D\BreakBricks3D\x64\Debug\empty_template.exe
   empty_template.vcxproj -> C:\Users\USER\Documents\GitHub\Break-Bricks-3D\BreakBricks3D\BreakBricks3D\x64\Debug\empty_template.pdb (Partial PDB)

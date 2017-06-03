@@ -28,8 +28,8 @@ public:
 
 private:
 	const int FPS = 60;
-	int width_window = 640;
-	int height_window = 480;
+	const int width_window = 1200;
+	const int height_window = 900;
 
 	GLFWwindow *window = nullptr;
 	GL2_Light light;

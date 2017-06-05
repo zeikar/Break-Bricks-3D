@@ -35,7 +35,7 @@ private:
 
 	static const float BALL_RADIUS;
 	static const float LEFT_WALL_POS, RIGHT_WALL_POS, UP_WALL_POS, WALL_WIDTH;
-	static const int COLLISION_X = 1, COLLISION_Y = 2, COLLISION_CORNER = 3;
+	float ballSpeed;
 
 	// 밑의 판과 블록을 부술 공
 	GameObject player;
@@ -47,5 +47,4 @@ private:
 
 	// 충돌 체크
 	void collisionCheck();
-	int collisionBetweenCircleAndRect(GameObject& circleObject, GameObject& rectObject);
 };

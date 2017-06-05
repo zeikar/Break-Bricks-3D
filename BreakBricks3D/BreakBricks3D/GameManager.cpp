@@ -21,11 +21,11 @@ void GameManager::inputProcess()
 {
 	if (InputManager::getInstance().getKeyPressed(GLFW_KEY_A))
 	{
-		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(-0.1f, 0.0f, 0.0f));
+		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(-0.02f, 0.0f, 0.0f));
 	}
 	else if (InputManager::getInstance().getKeyPressed(GLFW_KEY_D))
 	{
-		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0.1f, 0.0f, 0.0f));
+		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0.02f, 0.0f, 0.0f));
 	}
 
 	// 스페이스바
@@ -47,9 +47,9 @@ void GameManager::renderGameObjects()
 
 void GameManager::initMap()
 {
-	for (int i = 0; i < MAP_HEIGHT; i++)
+	for (int i = 0; i < MAP_WIDTH; i++)
 	{
-		for (int j = 0; j < MAP_WIDTH; j++)
+		for (int j = 0; j < MAP_HEIGHT; j++)
 		{
 			GameObjectManager::getInstance().addBlock(i, j);
 		}

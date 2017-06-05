@@ -159,6 +159,7 @@
     <ClCompile Include="Math\Matrix2X2.cpp" />
     <ClCompile Include="Math\Matrix3X3.cpp" />
     <ClCompile Include="Math\Quaternion.cpp" />
+    <ClCompile Include="Physics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
@@ -204,6 +205,7 @@
     <ClInclude Include="Matrix4.h" />
     <ClInclude Include="ObjReader.h" />
     <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="Physics.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
   </ItemGroup>

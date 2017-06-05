@@ -1,8 +1,9 @@
 #include "GameObjectManager.h"
+#include "Physics.h"
 
 const float GameObjectManager::BALL_RADIUS = 0.2f;
-const float GameObjectManager::LEFT_WALL_POS = -1.0f;
-const float GameObjectManager::RIGHT_WALL_POS = 5.0f;
+const float GameObjectManager::LEFT_WALL_POS = -1.5f;
+const float GameObjectManager::RIGHT_WALL_POS = 5.5f;
 const float GameObjectManager::UP_WALL_POS = 5.0f;
 const float GameObjectManager::WALL_WIDTH = 0.4f;
 
@@ -20,6 +21,8 @@ void GameObjectManager::initBall()
 	ball.setMaterial(GL2_Material::MAT_RED);
 	ball.translate(glm::vec3(0.0f, -4.0f, 0.0f));
 	ball.setScale(glm::vec3(BALL_RADIUS * 2, BALL_RADIUS * 2, BALL_RADIUS * 2));
+
+	ballSpeed = 0.03f;
 }
 
 void GameObjectManager::initWalls()
@@ -77,7 +80,7 @@ void GameObjectManager::renderAll()
 	upWall.render();
 
 	collisionCheck();
-	ball.advanceOneTimeStep(0.1f);
+	ball.advanceOneTimeStep(ballSpeed);
 	ball.render();
 
 	for (int i = 0; i < blocks.size(); i++)
@@ -93,9 +96,9 @@ void GameObjectManager::collisionCheck()
 
 	const glm::vec3& ballVelocity = ball.getVelocity();
 
-	const int collisionBallAndPlayer = collisionBetweenCircleAndRect(ball, player);
+	const int collisionBallAndPlayer = Physics::intersectionBetweenCircleAndRect(ball, player);
 	// 공이 판에 부딪혀서 튕겨나온다.
-	if (collisionBallAndPlayer == COLLISION_Y)
+	if (collisionBallAndPlayer == Physics::COLLISION_UP)
 	{
 		if (ballVelocity.y < 0.0f)
 		{
@@ -104,7 +107,7 @@ void GameObjectManager::collisionCheck()
 			ball.setVelocity(glm::vec3(newX, -ballVelocity.y, ballVelocity.z));
 		}
 	}
-	else if (collisionBallAndPlayer == COLLISION_X)
+	else if (collisionBallAndPlayer == Physics::COLLISION_LEFT || collisionBallAndPlayer == Physics::COLLISION_RIGHT)
 	{
 		if (ballVelocity.x < 0.0f)
 		{
@@ -113,14 +116,14 @@ void GameObjectManager::collisionCheck()
 	}
 
 	// 공이 옆 벽에 부딪혀서 튕겨나온다.
-	if (collisionBetweenCircleAndRect(ball, leftWall) == COLLISION_X)
+	if (Physics::intersectionBetweenCircleAndRect(ball, leftWall) == Physics::COLLISION_RIGHT)
 	{
 		if (ballVelocity.x < 0.0f)
 		{
 			ball.setVelocity(glm::vec3(-ballVelocity.x, ballVelocity.y, ballVelocity.z));
 		}
 	}
-	else if (collisionBetweenCircleAndRect(ball, rightWall) == COLLISION_X)
+	else if (Physics::intersectionBetweenCircleAndRect(ball, rightWall) == Physics::COLLISION_LEFT)
 	{
 		if (ballVelocity.x > 0.0f)
 		{
@@ -129,7 +132,7 @@ void GameObjectManager::collisionCheck()
 	}
 
 	// 공이 위 벽에 부딪혀서 튕겨나온다.
-	if (collisionBetweenCircleAndRect(ball, upWall) == COLLISION_Y)
+	if (Physics::intersectionBetweenCircleAndRect(ball, upWall) == Physics::COLLISION_DOWN)
 	{
 		if (ballVelocity.y > 0.0f)
 		{
@@ -151,78 +154,65 @@ void GameObjectManager::collisionCheck()
 		}
 
 		// 블럭에 맞고 튕겨 나온다.
-		const int collision = collisionBetweenCircleAndRect(ball, *blocks[i]);
-		// 옆 면에서 충돌
-		if (collision == COLLISION_X)
-		{
-			ball.setVelocity(glm::vec3(-ballVelocity.x, ballVelocity.y, ballVelocity.z));
-
-			// 블럭 파괴
-			blocks[i]->setActive(false);
-		}
+		const int collision = Physics::intersectionBetweenCircleAndRect(ball, *blocks[i]);
 		// 위나 아래 면에서 충돌
-		else if (collision == COLLISION_Y)
+		if (collision == Physics::COLLISION_UP || collision == Physics::COLLISION_DOWN)
 		{
-			ball.setVelocity(glm::vec3(ballVelocity.x, -ballVelocity.y, ballVelocity.z));
+			std::cout << i << "COLLISION_UP COLLISION_DOWN" << std::endl;
 
-			// 블럭 파괴
-			blocks[i]->setActive(false);
+			if ((collision == Physics::COLLISION_UP && ballVelocity.y < 0) ||
+				(collision == Physics::COLLISION_DOWN && ballVelocity.y > 0))
+			{
+				ball.setVelocity(glm::vec3(ballVelocity.x, -ballVelocity.y, ballVelocity.z));
+				// 블럭 파괴
+				blocks[i]->setActive(false);
+			}
+		}
+		// 옆 면에서 충돌
+		else if (collision == Physics::COLLISION_LEFT || collision == Physics::COLLISION_RIGHT)
+		{
+			std::cout << i << "COLLISION_LEFT COLLISION_RIGHT" << std::endl;
+
+			if ((collision == Physics::COLLISION_LEFT && ballVelocity.x > 0) ||
+				(collision == Physics::COLLISION_RIGHT && ballVelocity.x < 0))
+			{
+				ball.setVelocity(glm::vec3(-ballVelocity.x, ballVelocity.y, ballVelocity.z));
+				// 블럭 파괴
+				blocks[i]->setActive(false);
+			}			
 		}
 		// 구석에서 충돌
-		//else if (collision == COLLISION_CORNER)
+		//else if (collision == Physics::COLLISION_LOWER_LEFT || collision == Physics::COLLISION_LOWER_RIGHT ||
+		//	collision == Physics::COLLISION_UPPER_LEFT || collision == Physics::COLLISION_UPPER_RIGHT)
 		//{
-		//	std::cout << "COLLISION_CORNER" << std::endl;
+		//	//// reflection vector
+		//	//// r = d - 2 (d . n) n
 
-		//	ball.setVelocity(glm::vec3(ballVelocity.x, ballVelocity.y, ballVelocity.z));
+		//	//glm::vec3 rectCorner, normalVector;
 
-		//	// 블럭 파괴
-		//	blocks[i]->setActive(false);
+		//	// lower left
+		//	if (collision == Physics::COLLISION_LOWER_LEFT)
+		//	{
+		//		std::cout << i << "COLLISION_LOWER_LEFT" << std::endl;
+		//	}
+		//	// lower right
+		//	else if (collision == Physics::COLLISION_LOWER_RIGHT)
+		//	{
+		//		std::cout << i << "COLLISION_LOWER_RIGHT" << std::endl;
+		//	}
+		//	// upper left
+		//	else if (collision == Physics::COLLISION_UPPER_LEFT)
+		//	{
+		//		std::cout << i << "COLLISION_UPPER_LEFT" << std::endl;
+		//	}
+		//	// upper right
+		//	else
+		//	{
+		//		std::cout << i << "COLLISION_UPPER_RIGHT" << std::endl;
+		//	}
+
+		//	//// 블럭 파괴
+		//	//blocks[i]->setActive(false);
 		//}
-	}
-}
-
-int GameObjectManager::collisionBetweenCircleAndRect(GameObject& circleObject, GameObject& rectObject)
-{
-	const glm::vec3& circlePos = circleObject.getPosition();
-	const float circleRadius = circleObject.getScale().x * 0.5f;
-
-	const glm::vec3& rectPos = rectObject.getPosition();
-	const glm::vec3& rectScale = rectObject.getScale();
-
-	const float circleDistanceX = abs(circlePos.x - rectPos.x);
-	const float circleDistanceY = abs(circlePos.y - rectPos.y);
-
-
-	if (circleDistanceX > (rectScale.x * 0.5f + circleRadius))
-	{
-		return 0;
-	}
-	if (circleDistanceY > (rectScale.y * 0.5f + circleRadius)) 
-	{
-		return 0; 
-	}
-
-	// y축 방향으로 충돌
-	if (circleDistanceX <= (rectScale.x * 0.5f))
-	{ 
-		return COLLISION_Y;
-	}
-	// x축 방향으로 충돌
-	if (circleDistanceY <= (rectScale.y * 0.5f))
-	{
-		return COLLISION_X; 
-	}
-
-	// 코너로 충돌 시
-	const float cornerDistance_sq = (circleDistanceX - rectScale.x * 0.5f) * (circleDistanceX - rectScale.x * 0.5f) +
-		(circleDistanceY - rectScale.y * 0.5f) * (circleDistanceY - rectScale.y * 0.5f);
-
-	if (cornerDistance_sq <= (circleRadius * circleRadius))
-	{
-		return COLLISION_CORNER;
-	}
-	else
-	{
-		return 0;
 	}
 }

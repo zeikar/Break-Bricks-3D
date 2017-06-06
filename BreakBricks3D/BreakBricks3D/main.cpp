@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
 		GameManager::getInstance().renderGameObjects();
 	}
 
+	GameManager::getInstance().release();
 	Graphics::getInstance().release();
 
 	return 0;

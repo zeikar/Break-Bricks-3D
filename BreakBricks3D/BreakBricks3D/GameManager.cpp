@@ -1,6 +1,7 @@
 #include "GameManager.h"
 #include "InputManager.h"
 #include "GameObjectManager.h"
+#include "SoundManager.h"
 
 void GameManager::init()
 {
@@ -15,17 +16,29 @@ void GameManager::init()
 
 	// 블럭 초기화
 	initMap();
+
+	// sound manager 초기화
+	SoundManager::getInstance().init();
+
+	// 배경음악 재생
+	SoundManager::getInstance().playBackgroundMusic();
+}
+
+void GameManager::release()
+{
+	// sound manager 해제
+	SoundManager::getInstance().release();
 }
 
 void GameManager::inputProcess()
 {
 	if (InputManager::getInstance().getKeyPressed(GLFW_KEY_A))
 	{
-		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(-0.02f, 0.0f, 0.0f));
+		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(-0.1f, 0.0f, 0.0f));
 	}
 	else if (InputManager::getInstance().getKeyPressed(GLFW_KEY_D))
 	{
-		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0.02f, 0.0f, 0.0f));
+		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0.1f, 0.0f, 0.0f));
 	}
 
 	// 스페이스바

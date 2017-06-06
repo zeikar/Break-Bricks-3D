@@ -95,6 +95,9 @@
     <ClCompile Include="Physics.cpp">
       <Filter>LuciZ_Library</Filter>
     </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>LuciZ_Library</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Matrix4.h" />
@@ -221,6 +224,9 @@
       <Filter>LuciZ_Library</Filter>
     </ClInclude>
     <ClInclude Include="Physics.h">
+      <Filter>LuciZ_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
       <Filter>LuciZ_Library</Filter>
     </ClInclude>
   </ItemGroup>

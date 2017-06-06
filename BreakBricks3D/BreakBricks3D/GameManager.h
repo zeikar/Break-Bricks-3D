@@ -12,6 +12,7 @@ public:
 	}
 
 	void init();
+	void release();
 	void inputProcess();
 	void renderGameObjects();
 

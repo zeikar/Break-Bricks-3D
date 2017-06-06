@@ -117,7 +117,7 @@ int Graphics::mainLoop()
 	/* Poll for and process events */
 	glfwPollEvents();
 
-	//std::this_thread::sleep_for(std::chrono::milliseconds(1000 / FPS));
+	std::this_thread::sleep_for(std::chrono::milliseconds(1000 / FPS));
 
 	return !glfwWindowShouldClose(window);
 }

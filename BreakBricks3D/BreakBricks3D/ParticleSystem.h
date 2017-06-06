@@ -7,12 +7,6 @@ class Particle
 {
 public:
 	Vector3D<float> pos_, vel_;
-
-	//Particle(const Particle& p)
-	//{
-	//	pos_ = p.pos_;
-	//	vel_ = p.vel_;
-	//}
 };
 
 class Sphere
@@ -34,31 +28,32 @@ public:
 
 class ParticleSystem
 {
-public:
+private:
 	std::vector<Particle> particles_;
+	Vector3D<float> startPos_;
 
-	Sphere object;
-
-	ParticleSystem()
+public:
+	bool isAbleToDelete = false;
+	
+	ParticleSystem(const Vector3D<float>& startPos)
 	{
-		particles_.resize(1000);
+		startPos_ = startPos;
 
+		particles_.resize(100);
+		
 		for (int p = 0; p < particles_.size(); ++p)
 		{
-			particles_[p].pos_.x_ = (float)rand() / (float)RAND_MAX *0.1 + 0.5f;
-			particles_[p].pos_.y_ = (float)rand() / (float)RAND_MAX + 1.0f;
-			particles_[p].pos_.z_ = (float)rand() / (float)RAND_MAX *0.1 + 0.5f;
+			particles_[p].pos_.x_ = -0.5f + (float)rand() / (float)RAND_MAX + startPos_.x_;
+			particles_[p].pos_.y_ = -0.1f + (float)rand() / (float)RAND_MAX * 0.2 + startPos_.y_;
+			particles_[p].pos_.z_ = -0.5f + (float)rand() / (float)RAND_MAX + startPos_.z_;
 
-			particles_[p].vel_ = Vector3D<float>(0.0f, 0.0f, 0.0f);
-		}		
-
-		object.center_ = Vector3D<float>(0.5, 0.5, 0.5);
-		object.radius_ = 0.2;
+			particles_[p].vel_ = Vector3D<float>(-0.5f + (float)rand() / (float)RAND_MAX, -1.0f, -0.5f + (float)rand() / (float)RAND_MAX);
+		}
 	}
 
 	void advanceOneTimeStep(const float& dt)
 	{
-		const TV gravity = TV(0.0, -9.8, 0.0);
+		const Vector3D<float> gravity = Vector3D<float>(0.0f, -0.5f, 0.0f);
 
 		// Euler integration
 		for (int p = 0; p < particles_.size(); ++p)
@@ -68,29 +63,31 @@ public:
 		}
 
 		// Collision detection
-
 		for (int p = 0; p < particles_.size(); ++p)
 		{
-			if (particles_[p].pos_.y_ < 0.0f && particles_[p].vel_.y_ < 0.0f)
+			// 떨어지기 시작한 곳에서 2.0f 이상 떨어지면 이 파티클 삭제
+			if (particles_[p].pos_.y_ < startPos_.y_ - 2.0f)
 			{
-				particles_[p].vel_.y_ *= -0.4; // perfect restitution
+				isAbleToDelete = true;
 			}
-
-			if (object.getSignedDistance(particles_[p].pos_) < 0.0f && dotProduct(particles_[p].vel_, object.getNormal(particles_[p].pos_) ) < 0.0f)
-			{
-
-				const float n_dot_v = dotProduct(particles_[p].vel_, object.getNormal(particles_[p].pos_));
-				const Vector3D<float> normal_component = n_dot_v * object.getNormal(particles_[p].pos_);
-
-				particles_[p].vel_ -= normal_component;
-				particles_[p].vel_ += 0.5f * normal_component;
-
-			}
-
 		}
-
-
-
 	}
 
+	void renderParticles()
+	{
+		// old style rendering
+		// draw particles
+
+		glPointSize(5.0f);
+		glBegin(GL_POINTS);
+
+		glColor3f(1.0f, 0.0f, 0.0f);
+
+		for (int p = 0; p < particles_.size(); p++)
+		{
+			glVertex3fv(particles_[p].pos_.values_);
+		}
+
+		glEnd();
+	}
 };

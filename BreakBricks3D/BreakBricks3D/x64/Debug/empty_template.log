@@ -1,3 +1,8 @@
-﻿  GameObjectManager.cpp
-  empty_template.vcxproj -> C:\Users\Zeikar\Documents\GitHub\Break-Bricks-3D\BreakBricks3D\BreakBricks3D\x64\Debug\empty_template.exe
-  empty_template.vcxproj -> C:\Users\Zeikar\Documents\GitHub\Break-Bricks-3D\BreakBricks3D\BreakBricks3D\x64\Debug\empty_template.pdb (Partial PDB)
+﻿  SoundManager.cpp
+  GameObjectManager.cpp
+c:\users\user\documents\github\break-bricks-3d\breakbricks3d\breakbricks3d\particlesystem.h(47): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  건너뛰고 있습니다... (관련된 변경 내용 없음)
+  GameManager.cpp
+  empty_template.vcxproj -> C:\Users\USER\Documents\GitHub\Break-Bricks-3D\BreakBricks3D\BreakBricks3D\x64\Debug\empty_template.exe
+  empty_template.vcxproj -> C:\Users\USER\Documents\GitHub\Break-Bricks-3D\BreakBricks3D\BreakBricks3D\x64\Debug\empty_template.pdb (Partial PDB)

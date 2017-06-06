@@ -86,10 +86,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../;../glm/;./;..\glfw-3.2.1.bin.WIN64\include;..\glew-2.0.0\include\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../lib/fmodex64_vc.lib;../;../glm/;./;..\glfw-3.2.1.bin.WIN64\include;..\glew-2.0.0\include\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glu32.lib;opengl32.lib;glew32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>fmodex64_vc.lib;glu32.lib;opengl32.lib;glew32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\lib;..\glfw-3.2.1.bin.WIN64\lib-vc2015;..\glew-2.0.0\lib\Debug\x64</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -160,6 +160,7 @@
     <ClCompile Include="Math\Matrix3X3.cpp" />
     <ClCompile Include="Math\Quaternion.cpp" />
     <ClCompile Include="Physics.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
@@ -206,6 +207,7 @@
     <ClInclude Include="ObjReader.h" />
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="Physics.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
   </ItemGroup>

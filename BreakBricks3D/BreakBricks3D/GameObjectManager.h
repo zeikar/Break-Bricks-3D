@@ -1,7 +1,9 @@
 #pragma once
 #include "GameObject.h"
+#include "ParticleSystem.h"
 #include "Ball.h"
 #include <vector>
+#include <deque>
 
 class GameObjectManager
 {
@@ -45,6 +47,13 @@ private:
 	GameObject leftWall, rightWall, upWall;
 	std::vector<GameObject*> blocks;
 
+	// 파티클
+	std::deque<ParticleSystem*> particleSystems;
+
 	// 충돌 체크
 	void collisionCheck();
+	// 공이 블럭과 부딪힘
+	void collisionBlock(GameObject* block, const Vector3D<float>& collisionPos);
+	// 공이 블럭과 부딪히면 파티클 추가.
+	void addParticleSystem(const Vector3D<float>& collisionPos);
 };

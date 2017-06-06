@@ -1,5 +1,6 @@
 #include "GameObjectManager.h"
 #include "Physics.h"
+#include "SoundManager.h"
 
 const float GameObjectManager::BALL_RADIUS = 0.2f;
 const float GameObjectManager::LEFT_WALL_POS = -1.5f;
@@ -22,7 +23,7 @@ void GameObjectManager::initBall()
 	ball.translate(glm::vec3(0.0f, -4.0f, 0.0f));
 	ball.setScale(glm::vec3(BALL_RADIUS * 2, BALL_RADIUS * 2, BALL_RADIUS * 2));
 
-	ballSpeed = 0.03f;
+	ballSpeed = 0.1f;
 }
 
 void GameObjectManager::initWalls()
@@ -87,6 +88,21 @@ void GameObjectManager::renderAll()
 	{
 		blocks[i]->render();
 	}
+	
+	// particles
+	for (int i = 0; i < particleSystems.size(); i++)
+	{
+		particleSystems[i]->advanceOneTimeStep(0.01f);
+		particleSystems[i]->renderParticles();
+	}
+
+	// 파티클 일정 y좌표 이하로 떨어지면 제거
+	if (particleSystems.empty() == false &&
+		particleSystems[0]->isAbleToDelete)
+	{
+		delete particleSystems[0];
+		particleSystems.pop_front();
+	}
 }
 
 void GameObjectManager::collisionCheck()
@@ -144,7 +160,22 @@ void GameObjectManager::collisionCheck()
 	std::cout << ballScale.x << ' ' << ballScale.y << ' ' << ballScale.z << std::endl;
 	std::cout << playerPos.x << ' ' << playerPos.y << ' ' << playerPos.z << std::endl;
 	std::cout << playerScale.x << ' ' << playerScale.y << ' ' << playerScale.z << std::endl << std::endl;*/
-
+	
+	/*
+	for(it2 = uc.begin(); it2 != uc.end();)
+{
+   ...   
+   if(...)
+   {
+      it2 = uc.erase(it2); 
+   }
+   else
+   {
+      ++it2;
+   }
+   ...
+}
+*/
 	// 블럭에 맞고 튕겨 나온다.
 	for (int i = 0; i < blocks.size(); i++)
 	{
@@ -165,7 +196,7 @@ void GameObjectManager::collisionCheck()
 			{
 				ball.setVelocity(glm::vec3(ballVelocity.x, -ballVelocity.y, ballVelocity.z));
 				// 블럭 파괴
-				blocks[i]->setActive(false);
+				collisionBlock(blocks[i], blocks[i]->getPosition());
 			}
 		}
 		// 옆 면에서 충돌
@@ -178,7 +209,7 @@ void GameObjectManager::collisionCheck()
 			{
 				ball.setVelocity(glm::vec3(-ballVelocity.x, ballVelocity.y, ballVelocity.z));
 				// 블럭 파괴
-				blocks[i]->setActive(false);
+				collisionBlock(blocks[i], blocks[i]->getPosition());
 			}			
 		}
 		// 구석에서 충돌
@@ -215,4 +246,20 @@ void GameObjectManager::collisionCheck()
 		//	//blocks[i]->setActive(false);
 		//}
 	}
+}
+
+void GameObjectManager::collisionBlock(GameObject* block, const Vector3D<float>& collisionPos)
+{
+	// 블럭 파괴
+	block->setActive(false);
+
+	addParticleSystem(collisionPos);
+
+	// 블럭 파괴 효과음 재생
+	SoundManager::getInstance().playBrickSound();
+}
+
+void GameObjectManager::addParticleSystem(const Vector3D<float>& collisionPos)
+{
+	particleSystems.push_back(new ParticleSystem(collisionPos));
 }

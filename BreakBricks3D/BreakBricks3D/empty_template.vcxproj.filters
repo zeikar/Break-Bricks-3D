@@ -229,6 +229,7 @@
     <ClInclude Include="SoundManager.h">
       <Filter>LuciZ_Library</Filter>
     </ClInclude>
+    <ClInclude Include="BMPImage.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GL2\shaders\fragment_shader.glsl">

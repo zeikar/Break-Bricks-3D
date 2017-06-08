@@ -10,9 +10,11 @@ uniform mat4 mvp;
 
 in vec3 a_pos;
 in vec3 a_nor;
+in vec2 a_uv;
 
 out vec4 v;
 out vec4 N;
+out vec2 uv;	// uv coordinates OUT to fragment shader
 
 void main()
 {
@@ -22,4 +24,6 @@ void main()
 	N = normalize(mvp * vec4(a_nor, 0.0f));
 
 	gl_Position = v;
+
+	uv = a_uv;
 };

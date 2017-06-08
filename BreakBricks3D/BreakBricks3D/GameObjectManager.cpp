@@ -3,10 +3,10 @@
 #include "SoundManager.h"
 
 const float GameObjectManager::BALL_RADIUS = 0.2f;
-const float GameObjectManager::LEFT_WALL_POS = -1.5f;
-const float GameObjectManager::RIGHT_WALL_POS = 5.5f;
-const float GameObjectManager::UP_WALL_POS = 5.0f;
 const float GameObjectManager::WALL_WIDTH = 0.4f;
+const float GameObjectManager::LEFT_WALL_POS = -0.5f - WALL_WIDTH * 0.5f;
+const float GameObjectManager::RIGHT_WALL_POS = 6.5f + WALL_WIDTH * 0.5f;
+const float GameObjectManager::UP_WALL_POS = 5.0f;
 
 void GameObjectManager::initPlayer()
 {
@@ -23,7 +23,7 @@ void GameObjectManager::initBall()
 	ball.translate(glm::vec3(0.0f, -4.0f, 0.0f));
 	ball.setScale(glm::vec3(BALL_RADIUS * 2, BALL_RADIUS * 2, BALL_RADIUS * 2));
 
-	ballSpeed = 0.1f;
+	ballSpeed = 0.2f;
 }
 
 void GameObjectManager::initWalls()
@@ -60,6 +60,7 @@ void GameObjectManager::addBlock(const int x, const int y)
 
 	GameObject* gameObject = new GameObject();
 	gameObject->readOBJ("box.obj");
+	gameObject->setMaterial(rand() % GL2_Material::MAT_SIZE);
 
 	glm::vec3 position(x * BLOCK_WIDTH, y * BLOCK_HEIGHT, 0.0f);
 	gameObject->translate(position);

@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="BMPImage.h" />
     <ClInclude Include="CameraControl.h" />
     <ClInclude Include="DataStructure\Array1D.h" />
     <ClInclude Include="DataStructure\Array2D.h" />

@@ -52,7 +52,9 @@ int Graphics::init()
 	}
 
 
-	glClearColor(1, 1, 1, 1); // while background
+	//glClearColor(1, 1, 1, 1); // while background
+	glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
+
 
 	printf("%s\n", glGetString(GL_VERSION));
 
@@ -102,7 +104,7 @@ int Graphics::mainLoop()
 	glLoadMatrixf(&vp[0][0]);
 
 	glLineWidth(2);
-	gl_world.drawAxes();
+	//gl_world.drawAxes();
 	
 
 	// drawing objects

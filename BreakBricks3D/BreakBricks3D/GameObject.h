@@ -7,8 +7,9 @@ public:
 	GameObject();
 	~GameObject();
 
-	void readOBJ(const char* fileName);
+	void readOBJ(const char* fileName, const char * textureFileName = nullptr);
 	void setMaterial(int matType = 0);
+	void setTexture(const char* textureFileName);
 	void render();
 	void translate(const glm::vec3& direction);
 	glm::vec3& getScale();
@@ -19,7 +20,7 @@ public:
 	glm::vec3& getPosition();
 
 protected:
-	bool isActive = true;
+	bool isActive = true, hasTexture = false;
 	glm::vec3 position, scale;
 
 	StaticTriangularSurface surface;

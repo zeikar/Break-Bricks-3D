@@ -44,6 +44,44 @@ public:
 		updatePhongSurface(surface);
 	}
 
+	// uv 하나 더 있으니까 4개로
+	void initPhongSurfaceWithTexture(const StaticTriangularSurface& surface)
+	{
+		vbo_.init(4); // vertex, normal, uv(texture coordinates), connectivity
+		glGenBuffers(vbo_.num_elements_, vbo_.values_);
+
+		updatePhongSurfaceWithTexture(surface);
+	}
+
+	void updatePhongSurfaceWithTexture(const StaticTriangularSurface& surface)
+	{
+		num_elements_ = surface.triangles_.num_elements_ * 3;
+
+		glBindBuffer(GL_ARRAY_BUFFER, vbo_[0]);
+		glBufferData(GL_ARRAY_BUFFER, surface.vertex_positions_.num_elements_ * sizeof(float) * 3,
+			surface.vertex_positions_.values_, GL_STATIC_DRAW);
+
+		glBindBuffer(GL_ARRAY_BUFFER, vbo_[1]);
+		glBufferData(GL_ARRAY_BUFFER, surface.vertex_normals_.num_elements_ * sizeof(float) * 3,
+			surface.vertex_normals_.values_, GL_STATIC_DRAW);
+
+
+		// bind buffers for uv coordinates
+		// gpu로 uv 보낼수 있다.
+
+		glBindBuffer(GL_ARRAY_BUFFER, vbo_[2]);
+		glBufferData(GL_ARRAY_BUFFER, surface.vertex_uv_.num_elements_ * sizeof(float) * 3,
+			surface.vertex_uv_.values_, GL_STATIC_DRAW);
+
+
+		Array1D<Vector3D<unsigned int> > tri_ix;
+		surface.getUnsignedIntTriangles(tri_ix);
+
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo_[3]);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, tri_ix.num_elements_ * sizeof(unsigned int) * 3,
+			surface.triangles_.values_, GL_STATIC_DRAW);
+	}
+
 	void updatePhongSurface(const StaticTriangularSurface& surface)
 	{
 		num_elements_ = surface.triangles_.num_elements_ * 3;
@@ -103,6 +141,63 @@ public:
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo_[2]);
 		glLineWidth(1);
 		glPolygonMode(GL_FRONT, GL_LINES);
+		glDrawElements(GL_TRIANGLES, num_elements_, GL_UNSIGNED_INT, 0);
+	}
+
+	void drawTextureWithShader(const GL2_ShaderProgram& program)
+	{
+		//glUseProgram(shader_programme);	// activate your shader!
+
+		//TODO: use one 'lightproduct' uniform for amb, dif, and spe.
+		program.sendUniform(light_position_, "light_position");
+		program.sendUniform(light_product_ambient_, "light_product_ambient");
+		program.sendUniform(light_product_diffuse_, "light_product_diffuse");
+		program.sendUniform(light_product_specular_, "light_product_specular");
+		program.sendUniform(mat_shininess_, "mat_shininess");
+
+		// draw here
+		glBindBuffer(GL_ARRAY_BUFFER, vbo_[0]);
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer
+		(
+			0,                  // attribute 0
+			3,                  // size (x, y, z)
+			GL_FLOAT,           // type
+			GL_FALSE,           // normalized?
+			0,                  // stride
+			(void*)0            // array buffer offset
+		);
+
+		glBindBuffer(GL_ARRAY_BUFFER, vbo_[1]);
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer
+		(
+			1,                  // attribute 1
+			3,                  // size (nx, ny, nz)
+			GL_FLOAT,           // type
+			GL_FALSE,           // normalized?
+			0,                  // stride
+			(void*)0            // array buffer offset
+		);
+
+		// texture coordinates
+		glBindBuffer(GL_ARRAY_BUFFER, vbo_[2]);
+		glEnableVertexAttribArray(2);
+		glVertexAttribPointer
+		(
+			2,                  // attribute 2
+			2,                  // size (u, v)
+			GL_FLOAT,           // type
+			GL_FALSE,           // normalized?
+			0,                  // stride
+			(void*)0            // array buffer offset
+		);
+
+
+
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo_[3]);
+		glLineWidth(1);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		glDrawElements(GL_TRIANGLES, num_elements_, GL_UNSIGNED_INT, 0);
 	}
 

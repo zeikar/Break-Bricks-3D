@@ -24,7 +24,7 @@ private:
 	GameManager(GameManager const&); // prevent copies
 	void operator=(GameManager const&); // prevent assignments
 
-	static const int MAP_WIDTH = 5, MAP_HEIGHT = 7;
+	static const int MAP_WIDTH = 7, MAP_HEIGHT = 7;
 
 	// 게임이 시작되었는지 체크
 	bool isGameStarted = false;

@@ -7,6 +7,7 @@ GameObject::GameObject()
 {
 	position = glm::vec3(0.0f, 0.0f, 0.0f);
 	scale = glm::vec3(1.0f, 1.0f, 1.0f);
+	hp = 1;
 }
 
 GameObject::~GameObject()
@@ -61,6 +62,11 @@ void GameObject::readOBJ(const char* fileName, const char * textureFileName)
 void GameObject::setMaterial(int matType)
 {
 	gl_obj.mat_.setMaterial(matType);
+}
+
+const GL2_Material& GameObject::getMaterial()
+{
+	return gl_obj.mat_;
 }
 
 void GameObject::setTexture(const char * textureFileName)
@@ -171,6 +177,21 @@ bool GameObject::getActive()
 void GameObject::setActive(bool active)
 {
 	isActive = active;
+}
+
+void GameObject::setHp(const int hp)
+{
+	this->hp = hp;
+}
+
+void GameObject::getDamaged(const int amount)
+{
+	--hp;
+
+	if (hp <= 0)
+	{
+		isActive = false;
+	}
 }
 
 glm::vec3 & GameObject::getPosition()

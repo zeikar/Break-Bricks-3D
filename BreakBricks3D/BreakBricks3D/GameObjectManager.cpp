@@ -12,7 +12,7 @@ void GameObjectManager::initPlayer()
 {
 	player.readOBJ("box.obj");
 	player.setMaterial(GL2_Material::MAT_BLUE);
-	player.translate(glm::vec3(0.0f, -5.0f, 0.0f));
+	player.translate(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, -UP_WALL_POS, 0.0f));
 	player.setScale(glm::vec3(2.0f, 0.2f, 1.0f));
 }
 
@@ -20,7 +20,7 @@ void GameObjectManager::initBall()
 {
 	ball.readOBJ("sphere.obj");
 	ball.setMaterial(GL2_Material::MAT_RED);
-	ball.translate(glm::vec3(0.0f, -4.0f, 0.0f));
+	ball.translate(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, -UP_WALL_POS + BALL_RADIUS * 1.0f, 0.0f));
 	ball.setScale(glm::vec3(BALL_RADIUS * 2, BALL_RADIUS * 2, BALL_RADIUS * 2));
 
 	ballSpeed = 0.2f;
@@ -54,13 +54,14 @@ void GameObjectManager::startBall()
 	ball.setVelocity(glm::vec3(0.0f, 0.5f, 0.0f));
 }
 
-void GameObjectManager::addBlock(const int x, const int y)
+void GameObjectManager::addBlock(const int x, const int y, const int matType)
 {
 	const float BLOCK_WIDTH = 1.0f, BLOCK_HEIGHT = 0.5f;
 
 	GameObject* gameObject = new GameObject();
 	gameObject->readOBJ("box.obj");
-	gameObject->setMaterial(rand() % GL2_Material::MAT_SIZE);
+	gameObject->setMaterial(matType);
+	gameObject->setHp(matType - 2);
 
 	glm::vec3 position(x * BLOCK_WIDTH, y * BLOCK_HEIGHT, 0.0f);
 	gameObject->translate(position);
@@ -115,7 +116,8 @@ void GameObjectManager::collisionCheck()
 
 	const int collisionBallAndPlayer = Physics::intersectionBetweenCircleAndRect(ball, player);
 	// 공이 판에 부딪혀서 튕겨나온다.
-	if (collisionBallAndPlayer == Physics::COLLISION_UP)
+	if (collisionBallAndPlayer == Physics::COLLISION_UP || 
+		collisionBallAndPlayer == Physics::COLLISION_UPPER_LEFT || collisionBallAndPlayer == Physics::COLLISION_UPPER_RIGHT)
 	{
 		if (ballVelocity.y < 0.0f)
 		{
@@ -162,21 +164,6 @@ void GameObjectManager::collisionCheck()
 	std::cout << playerPos.x << ' ' << playerPos.y << ' ' << playerPos.z << std::endl;
 	std::cout << playerScale.x << ' ' << playerScale.y << ' ' << playerScale.z << std::endl << std::endl;*/
 	
-	/*
-	for(it2 = uc.begin(); it2 != uc.end();)
-{
-   ...   
-   if(...)
-   {
-      it2 = uc.erase(it2); 
-   }
-   else
-   {
-      ++it2;
-   }
-   ...
-}
-*/
 	// 블럭에 맞고 튕겨 나온다.
 	for (int i = 0; i < blocks.size(); i++)
 	{
@@ -251,16 +238,20 @@ void GameObjectManager::collisionCheck()
 
 void GameObjectManager::collisionBlock(GameObject* block, const Vector3D<float>& collisionPos)
 {
+	// 블럭 공격
+	//block->setActive(false);
+	block->getDamaged(1);
+	
 	// 블럭 파괴
-	block->setActive(false);
+	if (block->getActive() == false)
+	{
+		// 파티클 추가
+		particleSystems.push_back(new ParticleSystem(collisionPos, block->getMaterial()));
 
-	addParticleSystem(collisionPos);
-
-	// 블럭 파괴 효과음 재생
-	SoundManager::getInstance().playBrickSound();
-}
-
-void GameObjectManager::addParticleSystem(const Vector3D<float>& collisionPos)
-{
-	particleSystems.push_back(new ParticleSystem(collisionPos));
+		SoundManager::getInstance().playSound(SoundManager::BRICK_DESTROY);
+	}
+	else
+	{
+		SoundManager::getInstance().playSound(SoundManager::BRICK_COLLISION);
+	}
 }

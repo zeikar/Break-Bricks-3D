@@ -12,13 +12,15 @@ public:
 		return instance;
 	}
 
+	static const int BRICK_COLLISION = 3, BRICK_DESTROY = 4;
+
 	void init();
 	void release();
 
 	// 배경음악 재생
 	void playBackgroundMusic();
 	// 블럭 파괴될 때의 효과음 재생
-	void playBrickSound();
+	void playSound(const int soundType);
 
 private:
 	SoundManager(void) // private constructor necessary to allow only 1 instance

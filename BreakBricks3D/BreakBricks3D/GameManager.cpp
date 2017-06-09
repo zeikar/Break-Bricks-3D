@@ -2,9 +2,13 @@
 #include "InputManager.h"
 #include "GameObjectManager.h"
 #include "SoundManager.h"
+#include "GameLevelManager.h"
 
 void GameManager::init()
 {
+	// 게임 레벨 초기화
+	GameLevelManager::getInstance().init();
+
 	// 플레이어(판) 초기화
 	GameObjectManager::getInstance().initPlayer();
 
@@ -15,13 +19,20 @@ void GameManager::init()
 	GameObjectManager::getInstance().initBall();
 
 	// 블럭 초기화
-	initMap();
+	GameLevelManager::getInstance().initBlocks(currentLevel);
 
 	// sound manager 초기화
 	SoundManager::getInstance().init();
 
 	// 배경음악 재생
 	SoundManager::getInstance().playBackgroundMusic();
+}
+
+void GameManager::update()
+{
+	inputProcess();
+
+	renderGameObjects();
 }
 
 void GameManager::release()
@@ -56,15 +67,4 @@ void GameManager::inputProcess()
 void GameManager::renderGameObjects()
 {
 	GameObjectManager::getInstance().renderAll();
-}
-
-void GameManager::initMap()
-{
-	for (int i = 0; i < MAP_WIDTH; i++)
-	{
-		for (int j = 0; j < MAP_HEIGHT; j++)
-		{
-			GameObjectManager::getInstance().addBlock(i, j);
-		}
-	}
 }

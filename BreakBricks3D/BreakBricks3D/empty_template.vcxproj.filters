@@ -98,6 +98,9 @@
     <ClCompile Include="SoundManager.cpp">
       <Filter>LuciZ_Library</Filter>
     </ClCompile>
+    <ClCompile Include="GameLevelManager.cpp">
+      <Filter>LuciZ_Library</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Matrix4.h" />
@@ -230,6 +233,9 @@
       <Filter>LuciZ_Library</Filter>
     </ClInclude>
     <ClInclude Include="BMPImage.h" />
+    <ClInclude Include="GameLevelManager.h">
+      <Filter>LuciZ_Library</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="GL2\shaders\fragment_shader.glsl">

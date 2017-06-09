@@ -52,8 +52,8 @@ int Graphics::init()
 	}
 
 
-	//glClearColor(1, 1, 1, 1); // while background
-	glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
+	glClearColor(1, 1, 1, 1); // while background
+	//glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
 
 
 	printf("%s\n", glGetString(GL_VERSION));

@@ -23,7 +23,7 @@ public:
 	// 게임 시작 -> 공을 위로 보낸다.
 	void startBall();
 	//void addGameObject(const GameObject& gameObject);
-	void addBlock(const int x, const int y);
+	void addBlock(const int x, const int y, const int matType = 0);
 	GameObject* getBlock(const int x, const int y, const int MAP_WIDTH);
 	void renderAll();
 
@@ -54,6 +54,4 @@ private:
 	void collisionCheck();
 	// 공이 블럭과 부딪힘
 	void collisionBlock(GameObject* block, const Vector3D<float>& collisionPos);
-	// 공이 블럭과 부딪히면 파티클 추가.
-	void addParticleSystem(const Vector3D<float>& collisionPos);
 };

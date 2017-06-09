@@ -34,9 +34,12 @@ private:
 
 public:
 	bool isAbleToDelete = false;
+	const GL2_Material* material;
 	
-	ParticleSystem(const Vector3D<float>& startPos)
+	ParticleSystem(const Vector3D<float>& startPos, const GL2_Material& mat)
 	{
+		material = &mat;
+
 		startPos_ = startPos;
 
 		particles_.resize(100);
@@ -78,10 +81,13 @@ public:
 		// old style rendering
 		// draw particles
 
+		glUseProgram(0);
+
 		glPointSize(5.0f);
 		glBegin(GL_POINTS);
 
-		glColor3f(1.0f, 0.0f, 0.0f);
+		//glColor3f(1.0f, 0.0f, 0.0f);
+		glColor3f(material->diffuse_.x * 0.5f, material->diffuse_.y * 0.5f, material->diffuse_.z * 0.5f);
 
 		for (int p = 0; p < particles_.size(); p++)
 		{

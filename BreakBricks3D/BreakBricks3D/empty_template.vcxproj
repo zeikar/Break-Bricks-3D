@@ -132,6 +132,7 @@
     <ClCompile Include="CameraControl.cpp" />
     <ClCompile Include="DataStructure\Array2D.cpp" />
     <ClCompile Include="DataStructure\VectorND.cpp" />
+    <ClCompile Include="GameLevelManager.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="DataStructure\Vector3D.h" />
     <ClInclude Include="DataStructure\Vector4D.h" />
     <ClInclude Include="DataStructure\VectorND.h" />
+    <ClInclude Include="GameLevelManager.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />

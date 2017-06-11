@@ -23,12 +23,12 @@ private:
 	GameManager(GameManager const&); // prevent copies
 	void operator=(GameManager const&); // prevent assignments
 
-	// 현재 게임 레벨
-	int currentLevel = 0;
-	// 게임이 시작되었는지 체크
-	bool isGameStarted = false;
+	// 게임이 시작되었는지 체크, 게임 오버 체크
+	bool isGameStarted = false, isGameOver = false;
 
 
 	void inputProcess();
 	void renderGameObjects();
+
+	void sleep(const int amount);
 };

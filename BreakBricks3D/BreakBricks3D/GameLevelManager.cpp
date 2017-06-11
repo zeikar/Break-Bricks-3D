@@ -3,7 +3,7 @@
 
 void GameLevelManager::init()
 {
-	ifstream levelDataFile("Data\\level.dat");
+	ifstream levelDataFile("Data\\level.txt");
 
 	if (!levelDataFile)
 	{
@@ -14,7 +14,7 @@ void GameLevelManager::init()
 	// 변수 초기화
 	levelDataFile >> totalLevel >> mapHeight >> mapWidth;
 
-	while (totalLevel--)
+	for (int i = 0; i < totalLevel; i++)
 	{
 		stringstream input;
 
@@ -37,14 +37,31 @@ void GameLevelManager::init()
 	}
 }
 
-void GameLevelManager::initBlocks(const int level)
+bool GameLevelManager::initNewLevel()
+{
+	if (currentLevel >= totalLevel)
+	{
+		return false;
+	}
+
+	GameObjectManager::getInstance().initPlayer();
+	GameObjectManager::getInstance().initBall();
+
+	initBlocks();
+
+	++currentLevel;
+
+	return true;
+}
+
+void GameLevelManager::initBlocks()
 {
 	for (int i = 0; i < mapHeight; i++)
 	{
 		for (int j = 0; j < mapWidth; j++)
 		{
-			char blockType = blockInfo[level][i * mapWidth + j];
-			int matType;
+			char blockType = blockInfo[currentLevel][i * mapWidth + j];
+			int matType, hp;
 
 			if (blockType == '0')
 			{
@@ -54,13 +71,15 @@ void GameLevelManager::initBlocks(const int level)
 			if (blockType >= '1' && blockType <= '3')
 			{
 				matType = blockType - '0' + 2;
+				hp = blockType - '0';
 			}
 			else
 			{
 				matType = 1;
+				hp = -1;
 			}
 
-			GameObjectManager::getInstance().addBlock(j, mapHeight - i, matType);
+			GameObjectManager::getInstance().addBlock(j, mapHeight - i, matType, hp);
 		}
 	}
 }

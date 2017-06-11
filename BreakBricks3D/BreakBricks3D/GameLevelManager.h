@@ -18,7 +18,7 @@ public:
 	}
 
 	void init();
-	void initBlocks(const int level);
+	bool initNewLevel();
 
 private:
 	GameLevelManager(void) // private constructor necessary to allow only 1 instance
@@ -30,6 +30,9 @@ private:
 
 	// 총 레벨 개수, 블럭들의 너비와 높이
 	int totalLevel, mapWidth, mapHeight;
+	int currentLevel = 0;
 	// 블럭들의 정보
 	vector<string> blockInfo;
+
+	void initBlocks();
 };

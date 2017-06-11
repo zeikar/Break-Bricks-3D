@@ -12,22 +12,17 @@ public:
 	const GL2_Material& getMaterial();
 	void setTexture(const char* textureFileName);
 	void render();
+	void setPosition(const glm::vec3& pos);
 	void translate(const glm::vec3& direction);
 	glm::vec3& getScale();
 	void setScale(const glm::vec3& s);
 	void updateShader();
-	bool getActive();
-	void setActive(bool active);
-	void setHp(const int hp);
-	void getDamaged(const int amount = 1);
 	glm::vec3& getPosition();
 
 protected:
-	bool isActive = true, hasTexture = false;
+	bool hasTexture = false;
 	glm::vec3 position, scale;
-	int hp;
 
 	StaticTriangularSurface surface;
 	GL2_Object gl_obj;
-
 };

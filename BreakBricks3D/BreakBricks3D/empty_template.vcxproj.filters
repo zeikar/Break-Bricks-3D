@@ -101,6 +101,9 @@
     <ClCompile Include="GameLevelManager.cpp">
       <Filter>LuciZ_Library</Filter>
     </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>LuciZ_Library</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Matrix4.h" />
@@ -236,6 +239,9 @@
     <ClInclude Include="GameLevelManager.h">
       <Filter>LuciZ_Library</Filter>
     </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>LuciZ_Library</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="GL2\shaders\fragment_shader.glsl">
@@ -244,6 +250,7 @@
     <None Include="GL2\shaders\vertex_shader.glsl">
       <Filter>GL2\shaders</Filter>
     </None>
+    <None Include="Data\level.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GL2">

@@ -7,7 +7,6 @@ GameObject::GameObject()
 {
 	position = glm::vec3(0.0f, 0.0f, 0.0f);
 	scale = glm::vec3(1.0f, 1.0f, 1.0f);
-	hp = 1;
 }
 
 GameObject::~GameObject()
@@ -94,11 +93,6 @@ void GameObject::setTexture(const char * textureFileName)
 
 void GameObject::render()
 {
-	if (isActive == false)
-	{
-		return;
-	}
-
 	if (hasTexture)
 	{
 		// uniform to send texture image data
@@ -128,6 +122,11 @@ void GameObject::render()
 	{
 		gl_obj.drawWithShader(Graphics::getInstance().getGL_World().shaders_);
 	}
+}
+
+void GameObject::setPosition(const glm::vec3 & pos)
+{
+	translate(pos - position);
 }
 
 void GameObject::translate(const glm::vec3& direction)
@@ -166,31 +165,6 @@ void GameObject::updateShader()
 	else
 	{
 		gl_obj.updatePhongSurface(surface);
-	}
-}
-
-bool GameObject::getActive()
-{
-	return isActive;
-}
-
-void GameObject::setActive(bool active)
-{
-	isActive = active;
-}
-
-void GameObject::setHp(const int hp)
-{
-	this->hp = hp;
-}
-
-void GameObject::getDamaged(const int amount)
-{
-	--hp;
-
-	if (hp <= 0)
-	{
-		isActive = false;
 	}
 }
 

@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "ParticleSystem.h"
 #include "Ball.h"
+#include "Block.h"
 #include <vector>
 #include <deque>
 
@@ -16,6 +17,11 @@ public:
 		return instance;
 	}
 
+	static const float BALL_RADIUS;
+	static const float LEFT_WALL_POS, RIGHT_WALL_POS, UP_WALL_POS, WALL_WIDTH;
+
+	void loadPlayer();
+	void loadBall();
 	void initPlayer();
 	void initBall();
 	void initWalls();
@@ -23,9 +29,13 @@ public:
 	// 게임 시작 -> 공을 위로 보낸다.
 	void startBall();
 	//void addGameObject(const GameObject& gameObject);
-	void addBlock(const int x, const int y, const int matType = 0);
-	GameObject* getBlock(const int x, const int y, const int MAP_WIDTH);
+	void addBlock(const int x, const int y, const int matType, const int hp);
+	Block* getBlock(const int x, const int y, const int MAP_WIDTH);
 	void renderAll();
+	void deleteAllBlocksAndParticles();
+	// 게임 클리어인지 (블록 전부 파괴) or 게임 오버 (볼을 놓쳤을 때)
+	bool isGameClear();
+	bool isGameOver();
 
 private:
 	GameObjectManager(void) // private constructor necessary to allow only 1 instance
@@ -35,8 +45,6 @@ private:
 	GameObjectManager(GameObjectManager const&); // prevent copies
 	void operator=(GameObjectManager const&); // prevent assignments
 
-	static const float BALL_RADIUS;
-	static const float LEFT_WALL_POS, RIGHT_WALL_POS, UP_WALL_POS, WALL_WIDTH;
 	float ballSpeed;
 
 	// 밑의 판과 블록을 부술 공
@@ -45,7 +53,7 @@ private:
 
 	// 옆과 위의 벽들
 	GameObject leftWall, rightWall, upWall;
-	std::vector<GameObject*> blocks;
+	std::vector<Block*> blocks;
 
 	// 파티클
 	std::deque<ParticleSystem*> particleSystems;
@@ -53,5 +61,5 @@ private:
 	// 충돌 체크
 	void collisionCheck();
 	// 공이 블럭과 부딪힘
-	void collisionBlock(GameObject* block, const Vector3D<float>& collisionPos);
+	void collisionBlock(Block* block, const Vector3D<float>& collisionPos);
 };

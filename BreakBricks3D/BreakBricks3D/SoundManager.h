@@ -12,13 +12,15 @@ public:
 		return instance;
 	}
 
-	static const int BRICK_COLLISION = 3, BRICK_DESTROY = 4;
+	static const int AUDIO_SIZE = 6;
+	static const int GAME_OVER = 2, BLOCK_COLLISION = 3, BLOCK_DESTROY = 4, GAME_CLEAR = 5;
 
 	void init();
 	void release();
 
 	// 배경음악 재생
 	void playBackgroundMusic();
+	void stopBackgroungMusic();
 	// 블럭 파괴될 때의 효과음 재생
 	void playSound(const int soundType);
 
@@ -33,6 +35,6 @@ private:
 	// fmod library for sound effects
 
 	FMOD_SYSTEM *g_System;		// 음악 및 소리 재생
-	FMOD_SOUND *g_Sound[6];		// 배경음악(효과음)의 개수
+	FMOD_SOUND *g_Sound[AUDIO_SIZE];		// 배경음악(효과음)의 개수
 	FMOD_CHANNEL *g_Channel[2]; // 동시재생될 개수
 };

@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Block.cpp" />
     <ClCompile Include="CameraControl.cpp" />
     <ClCompile Include="DataStructure\Array2D.cpp" />
     <ClCompile Include="DataStructure\VectorND.cpp" />
@@ -165,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Block.h" />
     <ClInclude Include="BMPImage.h" />
     <ClInclude Include="CameraControl.h" />
     <ClInclude Include="DataStructure\Array1D.h" />
@@ -215,6 +217,7 @@
     <ClInclude Include="Vector4.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\level.txt" />
     <None Include="GL2\shaders\fragment_shader.glsl" />
     <None Include="GL2\shaders\vertex_shader.glsl" />
   </ItemGroup>

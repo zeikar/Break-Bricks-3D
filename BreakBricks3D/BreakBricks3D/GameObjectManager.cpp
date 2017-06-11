@@ -8,21 +8,29 @@ const float GameObjectManager::LEFT_WALL_POS = -0.5f - WALL_WIDTH * 0.5f;
 const float GameObjectManager::RIGHT_WALL_POS = 6.5f + WALL_WIDTH * 0.5f;
 const float GameObjectManager::UP_WALL_POS = 5.0f;
 
-void GameObjectManager::initPlayer()
+void GameObjectManager::loadPlayer()
 {
 	player.readOBJ("box.obj");
 	player.setMaterial(GL2_Material::MAT_BLUE);
-	player.translate(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, -UP_WALL_POS, 0.0f));
 	player.setScale(glm::vec3(2.0f, 0.2f, 1.0f));
+}
+
+void GameObjectManager::loadBall()
+{
+	ball.readOBJ("sphere.obj");
+	ball.setMaterial(GL2_Material::MAT_RED);
+	ball.setScale(glm::vec3(BALL_RADIUS * 2, BALL_RADIUS * 2, BALL_RADIUS * 2));
+}
+
+void GameObjectManager::initPlayer()
+{
+	player.setPosition(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, -UP_WALL_POS, 0.0f));
 }
 
 void GameObjectManager::initBall()
 {
-	ball.readOBJ("sphere.obj");
-	ball.setMaterial(GL2_Material::MAT_RED);
-	ball.translate(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, -UP_WALL_POS + BALL_RADIUS * 1.0f, 0.0f));
-	ball.setScale(glm::vec3(BALL_RADIUS * 2, BALL_RADIUS * 2, BALL_RADIUS * 2));
-
+	ball.setPosition(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, -UP_WALL_POS + BALL_RADIUS * 1.0f, 0.0f));
+	ball.setVelocity(glm::vec3());
 	ballSpeed = 0.2f;
 }
 
@@ -54,14 +62,14 @@ void GameObjectManager::startBall()
 	ball.setVelocity(glm::vec3(0.0f, 0.5f, 0.0f));
 }
 
-void GameObjectManager::addBlock(const int x, const int y, const int matType)
+void GameObjectManager::addBlock(const int x, const int y, const int matType, const int hp)
 {
 	const float BLOCK_WIDTH = 1.0f, BLOCK_HEIGHT = 0.5f;
 
-	GameObject* gameObject = new GameObject();
+	Block* gameObject = new Block();
 	gameObject->readOBJ("box.obj");
 	gameObject->setMaterial(matType);
-	gameObject->setHp(matType - 2);
+	gameObject->setHp(hp);
 
 	glm::vec3 position(x * BLOCK_WIDTH, y * BLOCK_HEIGHT, 0.0f);
 	gameObject->translate(position);
@@ -70,7 +78,7 @@ void GameObjectManager::addBlock(const int x, const int y, const int matType)
 	blocks.push_back(gameObject);
 }
 
-GameObject * GameObjectManager::getBlock(const int x, const int y, const int MAP_WIDTH)
+Block * GameObjectManager::getBlock(const int x, const int y, const int MAP_WIDTH)
 {
 	return blocks[x * MAP_WIDTH + y];
 }
@@ -105,6 +113,41 @@ void GameObjectManager::renderAll()
 		delete particleSystems[0];
 		particleSystems.pop_front();
 	}
+}
+
+void GameObjectManager::deleteAllBlocksAndParticles()
+{
+	for (int i = 0; i < blocks.size(); i++)
+	{
+		delete blocks[i];
+	}
+
+	blocks.clear();
+
+	for (int i = 0; i < particleSystems.size(); i++)
+	{
+		delete particleSystems[i];
+	}
+
+	particleSystems.clear();
+}
+
+bool GameObjectManager::isGameClear()
+{
+	for (int i = 0; i < blocks.size(); i++)
+	{
+		if (blocks[i]->getActive() == true && blocks[i]->getInvincible() == false)
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool GameObjectManager::isGameOver()
+{
+	return ball.getPosition().y < player.getPosition().y - 2.0f;
 }
 
 void GameObjectManager::collisionCheck()
@@ -236,7 +279,7 @@ void GameObjectManager::collisionCheck()
 	}
 }
 
-void GameObjectManager::collisionBlock(GameObject* block, const Vector3D<float>& collisionPos)
+void GameObjectManager::collisionBlock(Block* block, const Vector3D<float>& collisionPos)
 {
 	// 블럭 공격
 	//block->setActive(false);
@@ -248,10 +291,10 @@ void GameObjectManager::collisionBlock(GameObject* block, const Vector3D<float>&
 		// 파티클 추가
 		particleSystems.push_back(new ParticleSystem(collisionPos, block->getMaterial()));
 
-		SoundManager::getInstance().playSound(SoundManager::BRICK_DESTROY);
+		SoundManager::getInstance().playSound(SoundManager::BLOCK_DESTROY);
 	}
 	else
 	{
-		SoundManager::getInstance().playSound(SoundManager::BRICK_COLLISION);
+		SoundManager::getInstance().playSound(SoundManager::BLOCK_COLLISION);
 	}
 }

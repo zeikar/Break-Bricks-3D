@@ -12,8 +12,8 @@ public:
 		return instance;
 	}
 
-	static const int AUDIO_SIZE = 6;
-	static const int GAME_OVER = 2, BLOCK_COLLISION = 3, BLOCK_DESTROY = 4, GAME_CLEAR = 5;
+	static const int AUDIO_SIZE = 7;
+	static const int GAME_OVER = 2, BLOCK_COLLISION = 3, BLOCK_DESTROY = 4, GAME_CLEAR = 5, ITEM_APPLY = 6;
 
 	void init();
 	void release();

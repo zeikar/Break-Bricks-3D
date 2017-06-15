@@ -129,6 +129,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="MovingGameObject.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="CameraControl.cpp" />
     <ClCompile Include="DataStructure\Array2D.cpp" />
@@ -166,6 +168,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="MovingGameObject.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="BMPImage.h" />
     <ClInclude Include="CameraControl.h" />

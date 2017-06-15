@@ -37,8 +37,13 @@ void GameLevelManager::init()
 	}
 }
 
-bool GameLevelManager::initNewLevel()
+bool GameLevelManager::initNewLevel(bool firstLevel)
 {
+	if (firstLevel)
+	{
+		currentLevel = 0;
+	}
+
 	if (currentLevel >= totalLevel)
 	{
 		return false;

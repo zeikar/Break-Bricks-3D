@@ -89,9 +89,6 @@
     <ClCompile Include="GameObjectManager.cpp">
       <Filter>LuciZ_Library</Filter>
     </ClCompile>
-    <ClCompile Include="Ball.cpp">
-      <Filter>LuciZ_Library</Filter>
-    </ClCompile>
     <ClCompile Include="Physics.cpp">
       <Filter>LuciZ_Library</Filter>
     </ClCompile>
@@ -102,6 +99,15 @@
       <Filter>LuciZ_Library</Filter>
     </ClCompile>
     <ClCompile Include="Block.cpp">
+      <Filter>LuciZ_Library</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingGameObject.cpp">
+      <Filter>LuciZ_Library</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>LuciZ_Library</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
       <Filter>LuciZ_Library</Filter>
     </ClCompile>
   </ItemGroup>
@@ -226,9 +232,6 @@
     <ClInclude Include="GameObjectManager.h">
       <Filter>LuciZ_Library</Filter>
     </ClInclude>
-    <ClInclude Include="Ball.h">
-      <Filter>LuciZ_Library</Filter>
-    </ClInclude>
     <ClInclude Include="Physics.h">
       <Filter>LuciZ_Library</Filter>
     </ClInclude>
@@ -240,6 +243,15 @@
       <Filter>LuciZ_Library</Filter>
     </ClInclude>
     <ClInclude Include="Block.h">
+      <Filter>LuciZ_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingGameObject.h">
+      <Filter>LuciZ_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>LuciZ_Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
       <Filter>LuciZ_Library</Filter>
     </ClInclude>
   </ItemGroup>

@@ -18,7 +18,7 @@ public:
 	}
 
 	void init();
-	bool initNewLevel();
+	bool initNewLevel(bool firstLevel = false);
 
 private:
 	GameLevelManager(void) // private constructor necessary to allow only 1 instance

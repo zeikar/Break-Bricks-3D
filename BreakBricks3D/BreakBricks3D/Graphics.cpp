@@ -70,7 +70,7 @@ int Graphics::init()
 	const float zNear = 0.001, zFar = 100.0, fov = 45.0;			// UI
 	gl_world.camera_.Resize(width, height, fov, zNear, zFar);
 	gl_world.camera_.UpdateDolly(-90.0f);
-	gl_world.camera_.StartMousePan(120, 30);
+	gl_world.camera_.StartMousePan(150, 30);
 	gl_world.camera_.ProcessMouseMotion(0, 5);
 	gl_world.camera_.EndMousePan(0, 5);
 	gl_world.camera_.SetCenterOfRotation(glm::vec3((GameObjectManager::LEFT_WALL_POS + GameObjectManager::RIGHT_WALL_POS) / 2, 0.0f, 0.0f));
@@ -121,7 +121,7 @@ int Graphics::mainLoop()
 	/* Poll for and process events */
 	glfwPollEvents();
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(1000 / FPS));
+	std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
 	return !glfwWindowShouldClose(window);
 }

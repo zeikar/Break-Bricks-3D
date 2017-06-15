@@ -2,21 +2,15 @@
 
 Ball::Ball()
 {
-	velocity = glm::vec3(0.0f, 0.0f, 0.0f);
+	power = 1;
 }
 
-glm::vec3 & Ball::getVelocity()
+void Ball::setPower(const int amount)
 {
-	return velocity;
+	power = amount;
 }
 
-void Ball::setVelocity(const glm::vec3 & v)
+int Ball::getPower()
 {
-	velocity = v;
-}
-
-void Ball::advanceOneTimeStep(const float dt)
-{
-	//position += velocity * dt;
-	translate(velocity * dt);
+	return power;
 }

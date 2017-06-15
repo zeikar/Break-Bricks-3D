@@ -2,6 +2,8 @@
 #include "Physics.h"
 #include "SoundManager.h"
 
+const float GameObjectManager::PLAYER_WIDTH = 2.0f;
+const float GameObjectManager::PLAYER_HEIGHT = 0.2f;
 const float GameObjectManager::BALL_RADIUS = 0.2f;
 const float GameObjectManager::WALL_WIDTH = 0.4f;
 const float GameObjectManager::LEFT_WALL_POS = -0.5f - WALL_WIDTH * 0.5f;
@@ -98,6 +100,12 @@ void GameObjectManager::renderAll()
 	{
 		blocks[i]->render();
 	}
+
+	// items
+	for (int i = 0; i < items.size(); i++)
+	{
+		items[i]->render();
+	}
 	
 	// particles
 	for (int i = 0; i < particleSystems.size(); i++)
@@ -115,8 +123,10 @@ void GameObjectManager::renderAll()
 	}
 }
 
-void GameObjectManager::deleteAllBlocksAndParticles()
+void GameObjectManager::deleteAllObjects()
 {
+	// delete blocks, particles, items
+
 	for (int i = 0; i < blocks.size(); i++)
 	{
 		delete blocks[i];
@@ -130,6 +140,13 @@ void GameObjectManager::deleteAllBlocksAndParticles()
 	}
 
 	particleSystems.clear();
+
+	for (int i = 0; i < items.size(); i++)
+	{
+		delete items[i];
+	}
+
+	items.clear();
 }
 
 bool GameObjectManager::isGameClear()
@@ -169,7 +186,8 @@ void GameObjectManager::collisionCheck()
 			ball.setVelocity(glm::vec3(newX, -ballVelocity.y, ballVelocity.z));
 		}
 	}
-	else if (collisionBallAndPlayer == Physics::COLLISION_LEFT || collisionBallAndPlayer == Physics::COLLISION_RIGHT)
+	else if ((collisionBallAndPlayer == Physics::COLLISION_LEFT || collisionBallAndPlayer == Physics::COLLISION_RIGHT)
+		&& ballPos.y < playerPos.y)
 	{
 		if (ballVelocity.x < 0.0f)
 		{
@@ -276,6 +294,23 @@ void GameObjectManager::collisionCheck()
 		//	//// 블럭 파괴
 		//	//blocks[i]->setActive(false);
 		//}
+
+		// 아이템과 플레이어와의 충돌 감지
+		for (int i = 0; i < items.size(); i++)
+		{
+			const int collisionItem = Physics::intersectionBetweenCircleAndRect(*items[i], player);
+
+			// 아이템 사용
+			if (items[i]->isItemAvailable() &&
+				(collisionItem == Physics::COLLISION_UP ||
+				collisionItem == Physics::COLLISION_UPPER_LEFT || collisionItem == Physics::COLLISION_UPPER_RIGHT ||
+					collisionItem == Physics::COLLISION_LEFT || collisionItem == Physics::COLLISION_RIGHT))
+			{
+				items[i]->applyItem(true);
+				
+				SoundManager::getInstance().playSound(SoundManager::ITEM_APPLY);
+			}
+		}
 	}
 }
 
@@ -283,7 +318,7 @@ void GameObjectManager::collisionBlock(Block* block, const Vector3D<float>& coll
 {
 	// 블럭 공격
 	//block->setActive(false);
-	block->getDamaged(1);
+	block->getDamaged(ball.getPower());
 	
 	// 블럭 파괴
 	if (block->getActive() == false)
@@ -291,10 +326,32 @@ void GameObjectManager::collisionBlock(Block* block, const Vector3D<float>& coll
 		// 파티클 추가
 		particleSystems.push_back(new ParticleSystem(collisionPos, block->getMaterial()));
 
+		// 20% 확률로
+		if (rand() % 5 == 0)
+		{
+			const int itemType = rand() % Item::ITEM_SIZE + 1;
+			// 아이템 추가
+			addItem(collisionPos, itemType, GL2_Material::MAT_RED + itemType - 1);
+		}
+
 		SoundManager::getInstance().playSound(SoundManager::BLOCK_DESTROY);
 	}
 	else
 	{
 		SoundManager::getInstance().playSound(SoundManager::BLOCK_COLLISION);
 	}
+}
+
+void GameObjectManager::addItem(const Vector3D<float>& collisionPos, const int itemType, const int matType)
+{
+	Item* itemObject = new Item();
+	itemObject->initItem(&ball, &player, itemType);
+	itemObject->readOBJ("sphere.obj");
+	itemObject->setMaterial(matType);
+
+	glm::vec3 position(collisionPos.x_, collisionPos.y_, collisionPos.z_);
+	itemObject->translate(position);
+
+	itemObject->setScale(glm::vec3(0.5f, 0.2f, 0.5f));
+	items.push_back(itemObject);
 }

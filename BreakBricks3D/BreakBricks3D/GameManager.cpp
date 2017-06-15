@@ -30,6 +30,9 @@ void GameManager::init()
 
 void GameManager::update()
 {
+	inputProcess();
+
+
 	if (isGameOver)
 	{
 		return;
@@ -42,7 +45,7 @@ void GameManager::update()
 		SoundManager::getInstance().playSound(SoundManager::GAME_CLEAR);
 
 		// 남아있는 블럭, 파티클들 제거
-		GameObjectManager::getInstance().deleteAllBlocksAndParticles();
+		GameObjectManager::getInstance().deleteAllObjects();
 
 		sleep(4000);
 
@@ -72,29 +75,30 @@ void GameManager::update()
 		return;
 	}
 
-	inputProcess();
-
 	renderGameObjects();
 }
 
 void GameManager::release()
 {
 	// 남아있는 블럭, 파티클들 제거
-	GameObjectManager::getInstance().deleteAllBlocksAndParticles();
+	GameObjectManager::getInstance().deleteAllObjects();
 	// sound manager 해제
 	SoundManager::getInstance().release();
 }
 
 void GameManager::inputProcess()
 {
-	if (InputManager::getInstance().getKeyPressed(GLFW_KEY_A))
+	if (InputManager::getInstance().getKeyPressed(GLFW_KEY_A) ||
+		InputManager::getInstance().getKeyPressed(GLFW_KEY_LEFT))
 	{
 		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(-0.1f, 0.0f, 0.0f));
 	}
-	else if (InputManager::getInstance().getKeyPressed(GLFW_KEY_D))
+	else if (InputManager::getInstance().getKeyPressed(GLFW_KEY_D) ||
+		InputManager::getInstance().getKeyPressed(GLFW_KEY_RIGHT))
 	{
 		GameObjectManager::getInstance().getPlayer().translate(glm::vec3(0.1f, 0.0f, 0.0f));
 	}
+
 
 	// 스페이스바
 	if (InputManager::getInstance().getKeyPressed(GLFW_KEY_SPACE))
@@ -103,6 +107,25 @@ void GameManager::inputProcess()
 		{
 			GameObjectManager::getInstance().startBall();
 			isGameStarted = true;
+		}
+		//GameObjectManager::getInstance().getBlock(1, 1, MAP_WIDTH)->setActive(false);
+	}
+
+	// r키 누르면 처음부터 재시작
+	if (InputManager::getInstance().getKeyPressed(GLFW_KEY_R))
+	{
+		if (isGameOver == true)
+		{
+			// 남아있는 블럭, 파티클들 제거
+			GameObjectManager::getInstance().deleteAllObjects();
+			GameLevelManager::getInstance().initNewLevel(true);
+
+			isGameStarted = false;
+			isGameOver = false;
+
+			// 배경음악 재생
+			SoundManager::getInstance().playBackgroundMusic();
+
 		}
 		//GameObjectManager::getInstance().getBlock(1, 1, MAP_WIDTH)->setActive(false);
 	}

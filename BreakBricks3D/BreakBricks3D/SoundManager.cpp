@@ -17,6 +17,9 @@ void SoundManager::init()
 	FMOD_System_CreateSound(g_System, "Audio\\atk_missile.wav", FMOD_DEFAULT, 0, &g_Sound[BLOCK_DESTROY]);
 	// 클리어 했을 때 효과음
 	FMOD_System_CreateSound(g_System, "Audio\\jingle_positive_002.wav", FMOD_DEFAULT, 0, &g_Sound[GAME_CLEAR]);
+	// 아이템 먹을 때 효과음
+	FMOD_System_CreateSound(g_System, "Audio\\ui_heart.wav", FMOD_DEFAULT, 0, &g_Sound[ITEM_APPLY]);
+	
 
 	FMOD_System_Update(g_System);
 }
@@ -33,7 +36,7 @@ void SoundManager::release()
 
 void SoundManager::playBackgroundMusic()
 {
-	FMOD_System_PlaySound(g_System, FMOD_CHANNEL_FREE, g_Sound[1], 0, &g_Channel[0]);
+	FMOD_System_PlaySound(g_System, FMOD_CHANNEL_REUSE, g_Sound[1], 0, &g_Channel[0]);
 }
 
 void SoundManager::stopBackgroungMusic()
@@ -43,6 +46,6 @@ void SoundManager::stopBackgroungMusic()
 
 void SoundManager::playSound(const int soundType)
 {
-	FMOD_System_PlaySound(g_System, FMOD_CHANNEL_FREE, g_Sound[soundType], 0, &g_Channel[1]);
+	FMOD_System_PlaySound(g_System, FMOD_CHANNEL_REUSE, g_Sound[soundType], 0, &g_Channel[1]);
 }
 

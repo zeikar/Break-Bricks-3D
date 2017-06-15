@@ -1,16 +1,13 @@
 #pragma once
-#include "GameObject.h"
+#include "MovingGameObject.h"
 
-class Ball : public GameObject
+class Ball : public MovingGameObject
 {
 public:
 	Ball();
-
-	glm::vec3& getVelocity();
-	void setVelocity(const glm::vec3& v);
-	void advanceOneTimeStep(const float dt);
+	void setPower(const int amount);
+	int getPower();
 
 private:
-
-	glm::vec3 velocity;
+	int power;
 };

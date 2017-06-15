@@ -3,6 +3,7 @@
 #include "ParticleSystem.h"
 #include "Ball.h"
 #include "Block.h"
+#include "Item.h"
 #include <vector>
 #include <deque>
 
@@ -17,6 +18,7 @@ public:
 		return instance;
 	}
 
+	static const float PLAYER_WIDTH, PLAYER_HEIGHT;
 	static const float BALL_RADIUS;
 	static const float LEFT_WALL_POS, RIGHT_WALL_POS, UP_WALL_POS, WALL_WIDTH;
 
@@ -32,7 +34,7 @@ public:
 	void addBlock(const int x, const int y, const int matType, const int hp);
 	Block* getBlock(const int x, const int y, const int MAP_WIDTH);
 	void renderAll();
-	void deleteAllBlocksAndParticles();
+	void deleteAllObjects();
 	// 게임 클리어인지 (블록 전부 파괴) or 게임 오버 (볼을 놓쳤을 때)
 	bool isGameClear();
 	bool isGameOver();
@@ -58,8 +60,13 @@ private:
 	// 파티클
 	std::deque<ParticleSystem*> particleSystems;
 
+	// 아이템
+	std::deque<Item*> items;
+
 	// 충돌 체크
 	void collisionCheck();
 	// 공이 블럭과 부딪힘
 	void collisionBlock(Block* block, const Vector3D<float>& collisionPos);
+	// 아이템 생성
+	void addItem(const const Vector3D<float>& collisionPos, const int itemType, const int matType);
 };

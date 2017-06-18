@@ -69,7 +69,7 @@ void GameObjectManager::addBlock(const int x, const int y, const int matType, co
 	const float BLOCK_WIDTH = 1.0f, BLOCK_HEIGHT = 0.5f;
 
 	Block* gameObject = new Block();
-	gameObject->readOBJ("box.obj");
+	gameObject->readOBJ("box_texture.obj", "Texture\\frontend-large.bmp");
 	gameObject->setMaterial(matType);
 	gameObject->setHp(hp);
 
@@ -123,16 +123,25 @@ void GameObjectManager::renderAll()
 	}
 }
 
-void GameObjectManager::deleteAllObjects()
+void GameObjectManager::deleteAllObjects(bool allClear)
 {
 	// delete blocks, particles, items
 
-	for (int i = 0; i < blocks.size(); i++)
+	if (allClear)
 	{
-		delete blocks[i];
+		for (int i = 0; i < blocks.size(); i++)
+		{
+			delete blocks[i];
+		}
+		blocks.clear();
 	}
-
-	blocks.clear();
+	else
+	{
+		for (int i = 0; i < blocks.size(); i++)
+		{
+			blocks[i]->setActive(false);
+		}
+	}
 
 	for (int i = 0; i < particleSystems.size(); i++)
 	{
@@ -176,7 +185,7 @@ void GameObjectManager::collisionCheck()
 
 	const int collisionBallAndPlayer = Physics::intersectionBetweenCircleAndRect(ball, player);
 	// 공이 판에 부딪혀서 튕겨나온다.
-	if (collisionBallAndPlayer == Physics::COLLISION_UP || 
+	if (collisionBallAndPlayer == Physics::COLLISION_UP ||
 		collisionBallAndPlayer == Physics::COLLISION_UPPER_LEFT || collisionBallAndPlayer == Physics::COLLISION_UPPER_RIGHT)
 	{
 		if (ballVelocity.y < 0.0f)
@@ -186,8 +195,14 @@ void GameObjectManager::collisionCheck()
 			ball.setVelocity(glm::vec3(newX, -ballVelocity.y, ballVelocity.z));
 		}
 	}
-	else if ((collisionBallAndPlayer == Physics::COLLISION_LEFT || collisionBallAndPlayer == Physics::COLLISION_RIGHT)
-		&& ballPos.y < playerPos.y)
+	else if (collisionBallAndPlayer == Physics::COLLISION_LEFT)
+	{
+		if (ballVelocity.x > 0.0f)
+		{
+			ball.setVelocity(glm::vec3(-ballVelocity.x, ballVelocity.y, ballVelocity.z));
+		}
+	}
+	else if (collisionBallAndPlayer == Physics::COLLISION_RIGHT)
 	{
 		if (ballVelocity.x < 0.0f)
 		{
@@ -235,8 +250,74 @@ void GameObjectManager::collisionCheck()
 
 		// 블럭에 맞고 튕겨 나온다.
 		const int collision = Physics::intersectionBetweenCircleAndRect(ball, *blocks[i]);
+
+		// 구석에서 충돌
+		if (collision == Physics::COLLISION_UPPER_LEFT)
+		{
+			std::cout << i << "COLLISION_UPPER_LEFT" << std::endl;
+
+			if (abs(playerPos.x - ballPos.x) > abs(ballPos.y - playerPos.y) && ballVelocity.x > 0)
+			{
+				ball.setVelocity(glm::vec3(-ballVelocity.x, ballVelocity.y, ballVelocity.z));
+				collisionBlock(blocks[i], blocks[i]->getPosition());
+			}
+			else if (abs(playerPos.x - ballPos.x) <= abs(ballPos.y - playerPos.y) && ballVelocity.y < 0)
+			{
+				ball.setVelocity(glm::vec3(ballVelocity.x, -ballVelocity.y, ballVelocity.z));
+				// 블럭 파괴
+				collisionBlock(blocks[i], blocks[i]->getPosition());
+			}
+		}
+		else if (collision == Physics::COLLISION_UPPER_RIGHT)
+		{
+			std::cout << i << "COLLISION_UPPER_RIGHT" << std::endl;
+
+			if (abs(playerPos.x - ballPos.x) > abs(ballPos.y - playerPos.y) && ballVelocity.x < 0)
+			{
+				ball.setVelocity(glm::vec3(-ballVelocity.x, ballVelocity.y, ballVelocity.z));
+				collisionBlock(blocks[i], blocks[i]->getPosition());
+			}
+			else if (abs(playerPos.x - ballPos.x) <= abs(ballPos.y - playerPos.y) && ballVelocity.y < 0)
+			{
+				ball.setVelocity(glm::vec3(ballVelocity.x, -ballVelocity.y, ballVelocity.z));
+				// 블럭 파괴
+				collisionBlock(blocks[i], blocks[i]->getPosition());
+			}
+		}
+		else if (collision == Physics::COLLISION_LOWER_LEFT)
+		{
+			std::cout << i << "COLLISION_LOWER_LEFT" << std::endl;
+
+			if (abs(playerPos.x - ballPos.x) > abs(ballPos.y - playerPos.y) && ballVelocity.x > 0)
+			{
+				ball.setVelocity(glm::vec3(-ballVelocity.x, ballVelocity.y, ballVelocity.z));
+				collisionBlock(blocks[i], blocks[i]->getPosition());
+			}
+			else if (abs(playerPos.x - ballPos.x) <= abs(ballPos.y - playerPos.y) && ballVelocity.y > 0)
+			{
+				ball.setVelocity(glm::vec3(ballVelocity.x, -ballVelocity.y, ballVelocity.z));
+				// 블럭 파괴
+				collisionBlock(blocks[i], blocks[i]->getPosition());
+			}
+		}
+		else if (collision == Physics::COLLISION_LOWER_RIGHT)
+		{
+			std::cout << i << "COLLISION_LOWER_RIGHT" << std::endl;
+
+			if (abs(playerPos.x - ballPos.x) > abs(ballPos.y - playerPos.y) && ballVelocity.x < 0)
+			{
+				ball.setVelocity(glm::vec3(-ballVelocity.x, ballVelocity.y, ballVelocity.z));
+				collisionBlock(blocks[i], blocks[i]->getPosition());
+			}
+			else if (abs(playerPos.x - ballPos.x) <= abs(ballPos.y - playerPos.y) && ballVelocity.y > 0)
+			{
+				ball.setVelocity(glm::vec3(ballVelocity.x, -ballVelocity.y, ballVelocity.z));
+				// 블럭 파괴
+				collisionBlock(blocks[i], blocks[i]->getPosition());
+			}
+		}
 		// 위나 아래 면에서 충돌
-		if (collision == Physics::COLLISION_UP || collision == Physics::COLLISION_DOWN)
+		else if (collision == Physics::COLLISION_UP || collision == Physics::COLLISION_DOWN)
 		{
 			std::cout << i << "COLLISION_UP COLLISION_DOWN" << std::endl;
 

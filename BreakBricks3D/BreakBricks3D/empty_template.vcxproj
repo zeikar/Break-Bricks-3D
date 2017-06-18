@@ -91,6 +91,7 @@
     <Link>
       <AdditionalDependencies>fmodex64_vc.lib;glu32.lib;opengl32.lib;glew32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\lib;..\glfw-3.2.1.bin.WIN64\lib-vc2015;..\glew-2.0.0\lib\Debug\x64</AdditionalLibraryDirectories>
+      <StackReserveSize>10000000</StackReserveSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

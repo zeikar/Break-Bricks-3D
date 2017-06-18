@@ -10,7 +10,6 @@ public:
 	void readOBJ(const char* fileName, const char * textureFileName = nullptr);
 	void setMaterial(int matType = 0);
 	const GL2_Material& getMaterial();
-	void setTexture(const char* textureFileName);
 	void render();
 	void setPosition(const glm::vec3& pos);
 	void translate(const glm::vec3& direction);
@@ -25,4 +24,7 @@ protected:
 
 	StaticTriangularSurface surface;
 	GL2_Object gl_obj;
+
+
+	void setTexture(const char* textureFileName);
 };

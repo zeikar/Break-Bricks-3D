@@ -81,7 +81,7 @@ void GameManager::update()
 void GameManager::release()
 {
 	// 남아있는 블럭, 파티클들 제거
-	GameObjectManager::getInstance().deleteAllObjects();
+	GameObjectManager::getInstance().deleteAllObjects(true);
 	// sound manager 해제
 	SoundManager::getInstance().release();
 }

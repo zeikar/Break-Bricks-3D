@@ -34,7 +34,7 @@ public:
 	void addBlock(const int x, const int y, const int matType, const int hp);
 	Block* getBlock(const int x, const int y, const int MAP_WIDTH);
 	void renderAll();
-	void deleteAllObjects();
+	void deleteAllObjects(bool allClear = false);
 	// 게임 클리어인지 (블록 전부 파괴) or 게임 오버 (볼을 놓쳤을 때)
 	bool isGameClear();
 	bool isGameOver();

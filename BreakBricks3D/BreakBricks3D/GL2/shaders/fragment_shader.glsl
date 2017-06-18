@@ -57,6 +57,7 @@ void main()
 	// texture ÇÔ¼ö : texture¿Í uvº¤ÅÍ
 	if(has_texture > 0)
 	{
-		frag_color = texture(my_texture, uv);
+		//frag_color = texture(my_texture, uv);
+		frag_color *= vec4(texture(my_texture, uv.xy).rgb, 1.0);
 	}
 };

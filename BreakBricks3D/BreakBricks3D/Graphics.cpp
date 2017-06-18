@@ -74,6 +74,9 @@ int Graphics::init()
 	gl_world.camera_.ProcessMouseMotion(0, 5);
 	gl_world.camera_.EndMousePan(0, 5);
 	gl_world.camera_.SetCenterOfRotation(glm::vec3((GameObjectManager::LEFT_WALL_POS + GameObjectManager::RIGHT_WALL_POS) / 2, 0.0f, 0.0f));
+	gl_world.camera_.StartMouseRotation(width / 2, height / 2);
+	gl_world.camera_.EndMouseRotation(width / 2, height / 2 - 20);
+
 	gl_world.initShaders();
 	
 	// depth test
@@ -85,6 +88,8 @@ int Graphics::init()
 	glDisable(GL_COLOR_MATERIAL);
 
 	glLoadIdentity();
+
+	return 0;
 }
 
 int Graphics::mainLoop()
@@ -95,7 +100,7 @@ int Graphics::mainLoop()
 	/* Render here */
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	gl_world.camera_.ContinueRotation();
+	//gl_world.camera_.ContinueRotation();
 
 	glm::mat4 vp = gl_world.camera_.GetWorldViewMatrix();
 

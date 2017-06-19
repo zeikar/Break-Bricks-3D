@@ -25,6 +25,8 @@ protected:
 	StaticTriangularSurface surface;
 	GL2_Object gl_obj;
 
+	GLuint textures;
+
 
 	void setTexture(const char* textureFileName);
 };

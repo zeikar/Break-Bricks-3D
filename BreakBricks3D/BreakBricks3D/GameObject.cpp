@@ -107,7 +107,6 @@ const GL2_Material& GameObject::getMaterial()
 
 void GameObject::setTexture(const char * textureFileName)
 {
-	GLuint textures;
 	glGenTextures(1, &textures);
 
 	glActiveTexture(GL_TEXTURE0);
@@ -155,6 +154,8 @@ void GameObject::render()
 
 	if (hasTexture)
 	{
+		glBindTexture(GL_TEXTURE_2D, textures);
+
 		gl_obj.drawTextureWithShader(Graphics::getInstance().getGL_World().shaders_);
 	}
 	else

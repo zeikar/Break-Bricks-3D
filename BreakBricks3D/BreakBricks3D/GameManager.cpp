@@ -6,6 +6,8 @@
 
 void GameManager::init()
 {
+	srand(time(0));
+
 	// 게임 레벨 초기화
 	GameLevelManager::getInstance().init();
 

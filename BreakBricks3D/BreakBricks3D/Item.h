@@ -9,7 +9,7 @@ public:
 	~Item();
 
 	static const int ITEM_SIZE = 3;
-	static const int POWER_UP = 1, SIZE_DOWN = 2, SIZE_UP = 3;
+	static const int POWER_UP = 1, BALL_SIZE_DOWN = 2, PLAYER_SIZE_UP = 3;
 
 	void initItem(Ball* ball, GameObject* player, const int itemType);
 	void applyItem(bool apply = true);

@@ -47,12 +47,12 @@ void Item::applyItem(bool apply)
 		}
 		break;
 	}
-	case SIZE_DOWN:
+	case BALL_SIZE_DOWN:
 	{
 		if (apply)
 		{
 			ball->setScale(glm::vec3(0.5f, 0.5f, 0.5f));
-			ball->setMaterial(GL2_Material::MAT_BLUE);
+			ball->setMaterial(GL2_Material::MAT_GREEN);
 		}
 		else
 		{
@@ -61,17 +61,15 @@ void Item::applyItem(bool apply)
 		}
 		break;
 	}
-	case SIZE_UP:
+	case PLAYER_SIZE_UP:
 	{
 		if (apply)
 		{
-			ball->setScale(glm::vec3(2.0f, 2.0f, 2.0f));
-			ball->setMaterial(GL2_Material::MAT_GREEN);
+			player->setScale(glm::vec3(2.0f, 1.0f, 2.0f));
 		}
 		else
 		{
-			ball->setScale(glm::vec3(0.5f, 0.5f, 0.5f));
-			ball->setMaterial(GL2_Material::MAT_RED);
+			player->setScale(glm::vec3(0.5f, 1.0f, 0.5f));
 		}
 		break;
 	}

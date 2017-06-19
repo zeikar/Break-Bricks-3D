@@ -1,6 +1,5 @@
 #include "Graphics.h"
 #include "InputManager.h"
-#include "CameraControl.h"
 #include "GameObjectManager.h"
 
 int Graphics::init()

@@ -10,12 +10,14 @@ for Introduction to Computer Graphics, 2017 Spring
 class GL2_Material
 {
 public:
-	static const int MAT_SIZE = 6;
+	static const int MAT_SIZE = 8;
 
 	const glm::vec4 ambientArr[MAT_SIZE] = {
 		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
 		glm::vec4(0.24725f, 0.2245f, 0.00645f, 1.0f),
 		glm::vec4(0.19225f, 0.19225f, 0.19225f, 1.0f),
+		glm::vec4(0.15f, 0.15f, 0.15f, 1.0f),
+		glm::vec4(0.15f, 0.15f, 0.15f, 1.0f),
 		glm::vec4(0.15f, 0.15f, 0.15f, 1.0f),
 		glm::vec4(0.15f, 0.15f, 0.15f, 1.0f),
 		glm::vec4(0.15f, 0.15f, 0.15f, 1.0f)
@@ -27,7 +29,9 @@ public:
 		glm::vec4(0.19225f, 0.19225f, 0.19225f, 1.0f),
 		glm::vec4(1.0f, 0.1f, 0.1f, 1.0f),
 		glm::vec4(0.1f, 0.1f, 1.0f, 1.0f),
-		glm::vec4(0.1f, 1.0f, 0.1f, 1.0f)
+		glm::vec4(0.1f, 1.0f, 0.1f, 1.0f),
+		glm::vec4(135.0f / 255.0f, 206.0f / 255.0f, 250.0f / 255.0f, 1.0f),
+		glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)
 	};
 
 	const glm::vec4 specularArr[MAT_SIZE] = {
@@ -36,7 +40,9 @@ public:
 		glm::vec4(0.1f, 0.1f, 0.1f, 1.0f),
 		glm::vec4(0.2f, 0.2f, 0.2f, 1.0f),
 		glm::vec4(0.2f, 0.2f, 0.2f, 1.0f),
-		glm::vec4(0.2f, 0.2f, 0.2f, 1.0f)
+		glm::vec4(0.2f, 0.2f, 0.2f, 1.0f),
+		glm::vec4(0.2f, 0.2f, 0.2f, 1.0f),
+		glm::vec4(0.2f, 0.2f, 0.2f, 1.0f),
 	};
 
 	const glm::vec4 emissionArr[MAT_SIZE] = {
@@ -45,7 +51,9 @@ public:
 		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
 		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
 		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
-		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f)
+		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
+		glm::vec4(0.0f, 0.0f, 0.0f, 1.0f),
+		glm::vec4(0.2f, 0.2f, 0.2f, 1.0f)
 };
 
 	const float shininessArr[MAT_SIZE] = {
@@ -54,10 +62,12 @@ public:
 		5.0f,
 		5.0f,
 		5.0f,
+		5.0f,
+		5.0f,
 		5.0f
 	};
 
-	static const int MAT_GOLD = 1, MAT_GRAY = 2, MAT_RED = 3, MAT_BLUE = 4, MAT_GREEN = 5;
+	static const int MAT_GOLD = 1, MAT_GRAY = 2, MAT_RED = 3, MAT_BLUE = 4, MAT_GREEN = 5, MAT_SKYBLUE = 6, MAT_WHITE = 7;
 	glm::vec4 ambient_, diffuse_, specular_, emission_;
 	float shininess_;
 

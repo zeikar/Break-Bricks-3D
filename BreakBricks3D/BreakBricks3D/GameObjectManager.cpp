@@ -26,32 +26,37 @@ void GameObjectManager::loadBall()
 
 void GameObjectManager::initPlayer()
 {
-	player.setPosition(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, -UP_WALL_POS, 0.0f));
+	player.setPosition(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, -UP_WALL_POS + 1.0f, 0.0f));
 }
 
 void GameObjectManager::initBall()
 {
-	ball.setPosition(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, -UP_WALL_POS + BALL_RADIUS * 1.0f, 0.0f));
+	ball.setPosition(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, -UP_WALL_POS + 1.0f + BALL_RADIUS * 1.0f, 0.0f));
 	ball.setVelocity(glm::vec3());
-	ballSpeed = 0.2f;
+	ballSpeed = 0.28f;
 }
 
 void GameObjectManager::initWalls()
 {
-	leftWall.readOBJ("box.obj");
-	leftWall.setMaterial(GL2_Material::MAT_GRAY);
+	leftWall.readOBJ("box_texture.obj", "Texture\\wall.bmp");
+	leftWall.setMaterial(GL2_Material::MAT_SKYBLUE);
 	leftWall.translate(glm::vec3(LEFT_WALL_POS, 0.0f, 0.0f));
 	leftWall.setScale(glm::vec3(WALL_WIDTH, UP_WALL_POS * 2 - WALL_WIDTH, 1.0f));
 
-	rightWall.readOBJ("box.obj");
-	rightWall.setMaterial(GL2_Material::MAT_GRAY);
+	rightWall.readOBJ("box_texture.obj", "Texture\\wall.bmp");
+	rightWall.setMaterial(GL2_Material::MAT_SKYBLUE);
 	rightWall.translate(glm::vec3(RIGHT_WALL_POS, 0.0f, 0.0f));
 	rightWall.setScale(glm::vec3(WALL_WIDTH, UP_WALL_POS * 2 - WALL_WIDTH, 1.0f));
 
-	upWall.readOBJ("box.obj");
-	upWall.setMaterial(GL2_Material::MAT_GRAY);
+	upWall.readOBJ("box_texture.obj", "Texture\\wall.bmp");
+	upWall.setMaterial(GL2_Material::MAT_SKYBLUE);
 	upWall.translate(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, UP_WALL_POS, 0.0f));
 	upWall.setScale(glm::vec3((RIGHT_WALL_POS - LEFT_WALL_POS) + WALL_WIDTH, WALL_WIDTH, 1.0f));
+
+	backWall.readOBJ("box_texture.obj", "Texture\\wall.bmp");
+	backWall.setMaterial(GL2_Material::MAT_SKYBLUE);
+	backWall.translate(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, 0.0f, -1.0f));
+	backWall.setScale(glm::vec3((RIGHT_WALL_POS - LEFT_WALL_POS) + WALL_WIDTH, UP_WALL_POS * 2 - WALL_WIDTH, 1.0f));
 }
 
 GameObject & GameObjectManager::getPlayer()
@@ -91,6 +96,7 @@ void GameObjectManager::renderAll()
 	leftWall.render();
 	rightWall.render();
 	upWall.render();
+	backWall.render();
 
 	collisionCheck();
 	ball.advanceOneTimeStep(ballSpeed);
@@ -191,8 +197,10 @@ void GameObjectManager::collisionCheck()
 		if (ballVelocity.y < 0.0f)
 		{
 			// 판의 위치에 따라 다르게 튕겨나감
-			const float newX = (ballPos.x - playerPos.x) * 0.5f;
-			ball.setVelocity(glm::vec3(newX, -ballVelocity.y, ballVelocity.z));
+			const float v = ballVelocity.x * ballVelocity.x + ballVelocity.y * ballVelocity.y;
+			const float newX = sin((ballPos.x - playerPos.x) / player.getScale().x * 1.4f) * sqrt(v);
+			const float newY = sqrt(v - newX * newX);
+			ball.setVelocity(glm::vec3(newX, newY, ballVelocity.z));
 		}
 	}
 	else if (collisionBallAndPlayer == Physics::COLLISION_LEFT)
@@ -254,7 +262,7 @@ void GameObjectManager::collisionCheck()
 		// 구석에서 충돌
 		if (collision == Physics::COLLISION_UPPER_LEFT)
 		{
-			std::cout << i << "COLLISION_UPPER_LEFT" << std::endl;
+			std::cout << "COLLISION_UPPER_LEFT" << std::endl;
 
 			if (abs(playerPos.x - ballPos.x) > abs(ballPos.y - playerPos.y) && ballVelocity.x > 0)
 			{
@@ -270,7 +278,7 @@ void GameObjectManager::collisionCheck()
 		}
 		else if (collision == Physics::COLLISION_UPPER_RIGHT)
 		{
-			std::cout << i << "COLLISION_UPPER_RIGHT" << std::endl;
+			std::cout << "COLLISION_UPPER_RIGHT" << std::endl;
 
 			if (abs(playerPos.x - ballPos.x) > abs(ballPos.y - playerPos.y) && ballVelocity.x < 0)
 			{
@@ -286,7 +294,7 @@ void GameObjectManager::collisionCheck()
 		}
 		else if (collision == Physics::COLLISION_LOWER_LEFT)
 		{
-			std::cout << i << "COLLISION_LOWER_LEFT" << std::endl;
+			std::cout << "COLLISION_LOWER_LEFT" << std::endl;
 
 			if (abs(playerPos.x - ballPos.x) > abs(ballPos.y - playerPos.y) && ballVelocity.x > 0)
 			{
@@ -302,7 +310,7 @@ void GameObjectManager::collisionCheck()
 		}
 		else if (collision == Physics::COLLISION_LOWER_RIGHT)
 		{
-			std::cout << i << "COLLISION_LOWER_RIGHT" << std::endl;
+			std::cout << "COLLISION_LOWER_RIGHT" << std::endl;
 
 			if (abs(playerPos.x - ballPos.x) > abs(ballPos.y - playerPos.y) && ballVelocity.x < 0)
 			{
@@ -319,7 +327,7 @@ void GameObjectManager::collisionCheck()
 		// 위나 아래 면에서 충돌
 		else if (collision == Physics::COLLISION_UP || collision == Physics::COLLISION_DOWN)
 		{
-			std::cout << i << "COLLISION_UP COLLISION_DOWN" << std::endl;
+			std::cout << "COLLISION_UP COLLISION_DOWN" << std::endl;
 
 			if ((collision == Physics::COLLISION_UP && ballVelocity.y < 0) ||
 				(collision == Physics::COLLISION_DOWN && ballVelocity.y > 0))
@@ -332,7 +340,7 @@ void GameObjectManager::collisionCheck()
 		// 옆 면에서 충돌
 		else if (collision == Physics::COLLISION_LEFT || collision == Physics::COLLISION_RIGHT)
 		{
-			std::cout << i << "COLLISION_LEFT COLLISION_RIGHT" << std::endl;
+			std::cout << "COLLISION_LEFT COLLISION_RIGHT" << std::endl;
 
 			if ((collision == Physics::COLLISION_LEFT && ballVelocity.x > 0) ||
 				(collision == Physics::COLLISION_RIGHT && ballVelocity.x < 0))
@@ -342,39 +350,6 @@ void GameObjectManager::collisionCheck()
 				collisionBlock(blocks[i], blocks[i]->getPosition());
 			}			
 		}
-		// 구석에서 충돌
-		//else if (collision == Physics::COLLISION_LOWER_LEFT || collision == Physics::COLLISION_LOWER_RIGHT ||
-		//	collision == Physics::COLLISION_UPPER_LEFT || collision == Physics::COLLISION_UPPER_RIGHT)
-		//{
-		//	//// reflection vector
-		//	//// r = d - 2 (d . n) n
-
-		//	//glm::vec3 rectCorner, normalVector;
-
-		//	// lower left
-		//	if (collision == Physics::COLLISION_LOWER_LEFT)
-		//	{
-		//		std::cout << i << "COLLISION_LOWER_LEFT" << std::endl;
-		//	}
-		//	// lower right
-		//	else if (collision == Physics::COLLISION_LOWER_RIGHT)
-		//	{
-		//		std::cout << i << "COLLISION_LOWER_RIGHT" << std::endl;
-		//	}
-		//	// upper left
-		//	else if (collision == Physics::COLLISION_UPPER_LEFT)
-		//	{
-		//		std::cout << i << "COLLISION_UPPER_LEFT" << std::endl;
-		//	}
-		//	// upper right
-		//	else
-		//	{
-		//		std::cout << i << "COLLISION_UPPER_RIGHT" << std::endl;
-		//	}
-
-		//	//// 블럭 파괴
-		//	//blocks[i]->setActive(false);
-		//}
 
 		// 아이템과 플레이어와의 충돌 감지
 		for (int i = 0; i < items.size(); i++)
@@ -407,12 +382,12 @@ void GameObjectManager::collisionBlock(Block* block, const Vector3D<float>& coll
 		// 파티클 추가
 		particleSystems.push_back(new ParticleSystem(collisionPos, block->getMaterial()));
 
-		// 20% 확률로
-		if (rand() % 5 == 0)
+		// 10% 확률로
+		if (rand() % 10 == 0)
 		{
 			const int itemType = rand() % Item::ITEM_SIZE + 1;
 			// 아이템 추가
-			addItem(collisionPos, itemType, GL2_Material::MAT_RED + itemType - 1);
+			addItem(collisionPos, itemType);
 		}
 
 		SoundManager::getInstance().playSound(SoundManager::BLOCK_DESTROY);
@@ -423,11 +398,36 @@ void GameObjectManager::collisionBlock(Block* block, const Vector3D<float>& coll
 	}
 }
 
-void GameObjectManager::addItem(const Vector3D<float>& collisionPos, const int itemType, const int matType)
+void GameObjectManager::addItem(const Vector3D<float>& collisionPos, const int itemType)
 {
 	Item* itemObject = new Item();
 	itemObject->initItem(&ball, &player, itemType);
 	itemObject->readOBJ("sphere.obj");
+
+	// 아이템 색깔 설정
+	int matType;
+
+	switch (itemType)
+	{
+	case Item::POWER_UP:
+	{
+		matType = GL2_Material::MAT_GOLD;
+		break;
+	}
+	case Item::BALL_SIZE_DOWN:
+	{
+		matType = GL2_Material::MAT_GREEN;
+		break;
+	}
+	case Item::PLAYER_SIZE_UP:
+	{
+		matType = GL2_Material::MAT_BLUE;
+		break;
+	}
+	default:
+		break;
+	}
+
 	itemObject->setMaterial(matType);
 
 	glm::vec3 position(collisionPos.x_, collisionPos.y_, collisionPos.z_);

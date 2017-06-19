@@ -77,9 +77,6 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>LuciZ_Library</Filter>
     </ClCompile>
-    <ClCompile Include="CameraControl.cpp">
-      <Filter>LuciZ_Library</Filter>
-    </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>LuciZ_Library</Filter>
     </ClCompile>
@@ -218,9 +215,6 @@
       <Filter>LuciZ_Library</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
-      <Filter>LuciZ_Library</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraControl.h">
       <Filter>LuciZ_Library</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">

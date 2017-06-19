@@ -133,7 +133,6 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="MovingGameObject.cpp" />
     <ClCompile Include="Block.cpp" />
-    <ClCompile Include="CameraControl.cpp" />
     <ClCompile Include="DataStructure\Array2D.cpp" />
     <ClCompile Include="DataStructure\VectorND.cpp" />
     <ClCompile Include="GameLevelManager.cpp" />
@@ -173,7 +172,6 @@
     <ClInclude Include="MovingGameObject.h" />
     <ClInclude Include="Block.h" />
     <ClInclude Include="BMPImage.h" />
-    <ClInclude Include="CameraControl.h" />
     <ClInclude Include="DataStructure\Array1D.h" />
     <ClInclude Include="DataStructure\Array2D.h" />
     <ClInclude Include="DataStructure\Array3D.h" />

@@ -54,7 +54,7 @@ private:
 	Ball ball;
 
 	// 옆과 위의 벽들
-	GameObject leftWall, rightWall, upWall;
+	GameObject leftWall, rightWall, upWall, backWall;
 	std::vector<Block*> blocks;
 
 	// 파티클
@@ -68,5 +68,5 @@ private:
 	// 공이 블럭과 부딪힘
 	void collisionBlock(Block* block, const Vector3D<float>& collisionPos);
 	// 아이템 생성
-	void addItem(const const Vector3D<float>& collisionPos, const int itemType, const int matType);
+	void addItem(const const Vector3D<float>& collisionPos, const int itemType);
 };

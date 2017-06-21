@@ -33,7 +33,7 @@ void GameObjectManager::initBall()
 {
 	ball.setPosition(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, -UP_WALL_POS + 1.0f + BALL_RADIUS * 1.0f, 0.0f));
 	ball.setVelocity(glm::vec3());
-	ballSpeed = 0.28f;
+	ballSpeed = 0.25f;
 }
 
 void GameObjectManager::initWalls()

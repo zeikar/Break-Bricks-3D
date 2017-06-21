@@ -1,5 +1,2 @@
-﻿  GameObjectManager.cpp
-c:\users\user\documents\github\break-bricks-3d\breakbricks3d\breakbricks3d\particlesystem.h(50): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\user\documents\github\break-bricks-3d\breakbricks3d\breakbricks3d\gameobjectmanager.h(71): warning C4114: 동일한 형식 한정자를 두 번 이상 사용했습니다.
-  empty_template.vcxproj -> C:\Users\USER\Documents\GitHub\Break-Bricks-3D\BreakBricks3D\BreakBricks3D\x64\Debug\empty_template.exe
+﻿  empty_template.vcxproj -> C:\Users\USER\Documents\GitHub\Break-Bricks-3D\BreakBricks3D\BreakBricks3D\x64\Debug\empty_template.exe
   empty_template.vcxproj -> C:\Users\USER\Documents\GitHub\Break-Bricks-3D\BreakBricks3D\BreakBricks3D\x64\Debug\empty_template.pdb (Partial PDB)

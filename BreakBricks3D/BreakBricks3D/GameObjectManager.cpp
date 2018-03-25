@@ -12,14 +12,14 @@ const float GameObjectManager::UP_WALL_POS = 5.0f;
 
 void GameObjectManager::loadPlayer()
 {
-	player.readOBJ("box.obj");
+	player.readOBJ("Data\\box.obj");
 	player.setMaterial(GL2_Material::MAT_BLUE);
 	player.setScale(glm::vec3(2.0f, 0.2f, 1.0f));
 }
 
 void GameObjectManager::loadBall()
 {
-	ball.readOBJ("sphere.obj");
+	ball.readOBJ("Data\\sphere.obj");
 	ball.setMaterial(GL2_Material::MAT_RED);
 	ball.setScale(glm::vec3(BALL_RADIUS * 2, BALL_RADIUS * 2, BALL_RADIUS * 2));
 }
@@ -33,27 +33,27 @@ void GameObjectManager::initBall()
 {
 	ball.setPosition(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, -UP_WALL_POS + 1.0f + BALL_RADIUS * 1.0f, 0.0f));
 	ball.setVelocity(glm::vec3());
-	ballSpeed = 0.25f;
+	ballSpeed = 0.2f;
 }
 
 void GameObjectManager::initWalls()
 {
-	leftWall.readOBJ("box_texture.obj", "Texture\\wall.bmp");
+	leftWall.readOBJ("Data\\box_texture.obj", "Texture\\wall.bmp");
 	leftWall.setMaterial(GL2_Material::MAT_SKYBLUE);
 	leftWall.translate(glm::vec3(LEFT_WALL_POS, 0.0f, 0.0f));
 	leftWall.setScale(glm::vec3(WALL_WIDTH, UP_WALL_POS * 2 - WALL_WIDTH, 1.0f));
 
-	rightWall.readOBJ("box_texture.obj", "Texture\\wall.bmp");
+	rightWall.readOBJ("Data\\box_texture.obj", "Texture\\wall.bmp");
 	rightWall.setMaterial(GL2_Material::MAT_SKYBLUE);
 	rightWall.translate(glm::vec3(RIGHT_WALL_POS, 0.0f, 0.0f));
 	rightWall.setScale(glm::vec3(WALL_WIDTH, UP_WALL_POS * 2 - WALL_WIDTH, 1.0f));
 
-	upWall.readOBJ("box_texture.obj", "Texture\\wall.bmp");
+	upWall.readOBJ("Data\\box_texture.obj", "Texture\\wall.bmp");
 	upWall.setMaterial(GL2_Material::MAT_SKYBLUE);
 	upWall.translate(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, UP_WALL_POS, 0.0f));
 	upWall.setScale(glm::vec3((RIGHT_WALL_POS - LEFT_WALL_POS) + WALL_WIDTH, WALL_WIDTH, 1.0f));
 
-	backWall.readOBJ("box_texture.obj", "Texture\\wall.bmp");
+	backWall.readOBJ("Data\\box_texture.obj", "Texture\\wall.bmp");
 	backWall.setMaterial(GL2_Material::MAT_SKYBLUE);
 	backWall.translate(glm::vec3((LEFT_WALL_POS + RIGHT_WALL_POS) * 0.5f, 0.0f, -1.0f));
 	backWall.setScale(glm::vec3((RIGHT_WALL_POS - LEFT_WALL_POS) + WALL_WIDTH, UP_WALL_POS * 2 - WALL_WIDTH, 1.0f));
@@ -74,7 +74,7 @@ void GameObjectManager::addBlock(const int x, const int y, const int matType, co
 	const float BLOCK_WIDTH = 1.0f, BLOCK_HEIGHT = 0.5f;
 
 	Block* gameObject = new Block();
-	gameObject->readOBJ("box_texture.obj", "Texture\\frontend-large.bmp");
+	gameObject->readOBJ("Data\\box_texture.obj", "Texture\\frontend-large.bmp");
 	gameObject->setMaterial(matType);
 	gameObject->setHp(hp);
 
@@ -402,7 +402,7 @@ void GameObjectManager::addItem(const Vector3D<float>& collisionPos, const int i
 {
 	Item* itemObject = new Item();
 	itemObject->initItem(&ball, &player, itemType);
-	itemObject->readOBJ("sphere.obj");
+	itemObject->readOBJ("Data\\sphere.obj");
 
 	// 아이템 색깔 설정
 	int matType;

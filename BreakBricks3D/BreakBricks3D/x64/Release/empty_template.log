@@ -1,0 +1,10 @@
+﻿  GameObjectManager.cpp
+c:\users\antst\documents\github\break-bricks-3d\breakbricks3d\breakbricks3d\ParticleSystem.h(50): warning C4244: '=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\antst\documents\github\break-bricks-3d\breakbricks3d\breakbricks3d\GameObjectManager.h(71): warning C4114: 동일한 형식 한정자를 두 번 이상 사용했습니다.
+  코드를 생성하고 있습니다.
+  70 of 1018 functions ( 6.9%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    22 functions had inline decision re-evaluated but remain unchanged
+  코드를 생성했습니다.
+  empty_template.vcxproj -> C:\Users\antst\Documents\GitHub\Break-Bricks-3D\BreakBricks3D\BreakBricks3D\x64\Release\empty_template.exe
+  empty_template.vcxproj -> C:\Users\antst\Documents\GitHub\Break-Bricks-3D\BreakBricks3D\BreakBricks3D\x64\Release\empty_template.pdb (Full PDB)
